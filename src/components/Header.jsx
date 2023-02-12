@@ -3,6 +3,7 @@ import { Link,  NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch,faAngleRight, faHome, faUser, faCircleUser,faLayerGroup,
 faCloud,faHeart,faAddressBook,faHandshake,faGear } from "@fortawesome/free-solid-svg-icons";
+import 'animate.css';
 import "../assets/css/fuente.css";
 export const Header = () => {
 
@@ -144,10 +145,10 @@ export const Header = () => {
       </div>
     </div>
     </div>
-      <header className=" hed_responsive  flex w-full justify-between items-center backdrop-blur-sm bg-white/30  ">
+      <header className=" hed_responsive border-b-2 py-1 border-gray-100  flex w-full justify-around items-center  ">
         <div className=" flex  items-center">
           <div className="self_t">
-            <h1 className="text-[#1876F2] text-3xl font-bold ml-4 my-1  mr-3">
+            <h1 className="text-[#1876F2] text-3xl font-bold ml-2 my-1  mr-1">
               Stored
             </h1>
           </div>
@@ -155,18 +156,23 @@ export const Header = () => {
           <div className="w-full">
             <nav className=" nav_header">
               <ul className=" m-0 sellf1 flex ">
-                <li className="relative lik mx-2 text-[1.1rem] text-cyan-900 todoFont">
-                  <NavLink to="/" className="nav-item   inline-block relative ">
+                <li className="relative lik p-1 mx-2 text-[1.1rem] text-cyan-900 todoFont">
+                  <NavLink to="/" className="nav-item font-bold   inline-block relative ">
+                    Inicio
+                  </NavLink>
+                </li>
+                <li className="relative lik mx-2 p-1 text-[1.1rem] text-cyan-900 todoFont">
+                  <NavLink to="/services" className="nav-item font-bold    inline-block relative ">
                     Servicios
                   </NavLink>
                 </li>
-                <li className="relative lik mx-2 text-[1.1rem] text-cyan-900 todoFont">
-                  <NavLink to="/ayuda" className="nav-item inline-block relative ">
+                <li className="relative lik mx-2 p-1 text-[1.1rem] text-cyan-900 todoFont">
+                  <NavLink to="/ayuda" className="nav-item font-bold  inline-block relative ">
                     Ayuda
                   </NavLink>
                 </li>
-                <li className="relative lik mx-2 text-[1.1rem] text-cyan-900 todoFont">
-                  <NavLink to="/servicios" className="nav-item  inline-block relative  ">
+                <li className="relative lik mx-2 p-1 text-[1.1rem] font-bold  text-cyan-900 todoFont">
+                  <NavLink to="/contactanos" className="nav-item  inline-block relative  ">
                     Contáctanos
                   </NavLink>
                 </li>
@@ -176,13 +182,13 @@ export const Header = () => {
         </div>
         <div className=" ">
           <form>
-            <div className="inpit w-full lg:w-80  border items-center  px-2 rounded flex">
+            <div className="inpit w-full lg:w-80 rounded-lg shadow-md border border-gray-300 items-center  px-2  flex">
               <div className="w-full">
                 <input
                   type="text"
                   name="search"
-                  placeholder="Que deseas buscar? "
-                  className=" block w-full px-2 py-1 bg-transparent
+                  placeholder="Búsqueda rápida... "
+                  className=" block w-full px-2 py-2 bg-transparent
                   text-cyan-900 
                   outline-none"
                 />
@@ -190,7 +196,7 @@ export const Header = () => {
               <div className="sea">
                 <FontAwesomeIcon
                   icon={faSearch}
-                  className="text-gray-300 text-xl"
+                  className="text-gray-300 text-xl  top-1 block"
                 />
               </div>
             </div>
@@ -203,8 +209,8 @@ export const Header = () => {
                 to="/login"
                 className={({ isActive }) =>
                   isActive
-                    ? " py-2 relative dad1 text-[1.1rem] active"
-                    : " py-2 relative dad1 text-[1.1rem] lik"
+                    ? " py-2 relative dad1 text-[1.1rem] active font-bold text-cyan-900"
+                    : " py-2 relative dad1 text-[1.1rem] lik font-bold text-cyan-900"
                 }
               >
                 Iniciar sesión
@@ -215,9 +221,9 @@ export const Header = () => {
                 to="/signup"
                 className={({ isActive }) =>
                   isActive
-                    ? `mx-4 border p-1.5 text-[1.1rem] bg-[#1876F2] todoFont px-4 text-white
+                    ? `mx-4 border p-1.5 font-bold  text-[1.1rem] bg-[#1876F2] todoFont px-4 text-white
                      hover:bg-white dad1 duration-200 hover:text-[#1876F2] rounded-full border-[#1876F2]`
-                    : "mx-4 border dad1 p-1.5 text-[1.1rem] todoFont px-4 hover:bg-[#1876F2] duration-200 hover:text-white rounded-full border-[#1876F2]"
+                    : " text-cyan-900 mx-4 border dad1 font-bold  p-1.5 text-[1.1rem] todoFont px-4 hover:bg-[#1876F2] duration-200 hover:text-white rounded-full border-[#1876F2]"
                 }
               >
                 Crear cuenta

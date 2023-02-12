@@ -14,33 +14,32 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    transform: scale(0);
     background: #1876F2;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
     -ms-transform: scale(0);
     -o-transform: scale(0);
+    transform: scale(0);
 }
 .content-home{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    
 }
 .h5-mktg {
     font-family: "Mona Sans","Mona Sans Header Fallback",-apple-system,BlinkMacSystemFont,
     "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     font-feature-settings: unset;
     color: white;
-    font-size: 55px ;
-    line-height: 55px ;
+    font-size: 60px ;
+    line-height: 60px ;
     font-weight: bold;
+    margin-top: 5rem;
+    display: block;
     letter-spacing: -0.03em !important;
 
 }
 @media screen and (max-width: 1158px){
-    .content-home{
-        
-    }
     .h5-mktg{
         font-size: 45px;
         
@@ -48,9 +47,7 @@
     }
 }
 @media screen and (max-width: 971px){
-    .content-home{
-        
-    }
+   
     .h5-mktg{
         font-size: 38px;
         
@@ -60,15 +57,16 @@
 @media screen and (max-width: 849px){
     .content-home{
         flex-direction: column;
+        align-items: center;
     }
     .h5-mktg{
-        margin-top: 10px;
-        font-size: 45px;
+        
+        font-size: 40px;
         text-align: center;
         display: block;
         width: 100%;
         line-height: 45px ;
-        margin: 0px 8px;
+        margin: 10px 8px;
     }
     .btn-y {
         display: none;
@@ -78,8 +76,6 @@
 
 .lik:hover::after{
     width: 100%;
-    transform: scale(1);
-    transition: 0.2s;
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -ms-transform: scale(1);
@@ -88,6 +84,8 @@
     -moz-transition: 0.2s;
     -ms-transition: 0.2s;
     -o-transition: 0.2s;
+    transform: scale(1);
+    transition: 0.2s;
 }
 
 .link{
@@ -100,12 +98,12 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    transform: scale(1);
     background: #1876F2;
     -webkit-transform: sc1ale(1);
     -moz-transform: sc1ale(1);
     -ms-transform: sc1ale(1);
     -o-transform: sc1ale(1);
+    transform: scale(1);
 }
 .heand1{
     display: none;
@@ -312,4 +310,127 @@ overflow-y: hidden;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
+}
+.img-sec1{
+
+    background: rgba(255, 255, 255, 0.527);
+    z-index: 1000;
+    position: relative;
+    border-radius: 20px;
+    border: 1px solid #fff;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+.circlepath{
+    
+    position: relative;
+   
+}
+.circlepath .circle1{
+    position: absolute;
+    clip-path: circle(50% at 50% 50%);
+    height: 100px;
+    width: 100px;
+    background: #44E27A;
+    display: block;
+    bottom: -40px;
+    right: -40px;
+   
+}
+.circlepath .circle2{
+    position: absolute;
+    clip-path: circle(50% at 50% 50%);
+    height: 100px;
+    width: 100px;
+    background: #1876F2;
+    display: block;
+    left: -40px;
+    top: -40px;
+   
+}
+.fuente-t1{
+
+    font-family: "Mona Sans","Mona Sans Header Fallback",-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-feature-settings: unset;
+    color: #404659;
+    font-size: 60px ;
+    line-height: 60px ;
+    font-weight: bold;
+    margin-top: 5rem;
+    display: block;
+    margin: 7rem 1em;
+    letter-spacing: -0.03em !important;
+    position: relative;
+}
+.fuente-t1::after{
+
+    content: "";
+    background: #1876F2;
+    height: 10px;
+    width: 10rem;
+    position: absolute;
+    border-radius: 20px;
+    top: -10px;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+
+}
+.bg-slik{
+    background-image: url("../img/wabesection.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    
+}
+.bgr{
+
+    background: linear-gradient(300deg, #A1C9FF , rgb(255, 255, 255),#fff );
+}
+.font2{
+    font-family: "Mona Sans","Mona Sans Header Fallback",-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-feature-settings: unset;
+    color: #1876F2;
+    font-size: 40px ;
+    line-height: 40px ;
+    font-weight: bold;
+    letter-spacing: -0.03em !important;
+    position: relative; 
+}
+.font3s{
+    font-family: "Mona Sans","Mona Sans Header Fallback",-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-feature-settings: unset;
+    color: #404659;
+    font-weight: 500;
+   
+    letter-spacing: -0.03em !important;
+    position: relative; 
+}
+.scalewrap{
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(90deg, #1876F2 ,#3189fd, #8ebfff,#f7f7f7 );
+    margin: 2rem 0px;
+    border-radius: 10px;
+}
+.shol{
+    
+    box-shadow: 0px 10px 30px #34d399;
+}
+.colorbgline{
+    
+    background: linear-gradient(180deg, #34d399,#1876f28d, #1876f20c);
+    box-shadow: 0px 10px 30px #1876F2;
+    
+}
+.tansp{
+    background: rgba(255, 255, 255, 0.527);
+    z-index: 1000;
+    border-radius: 20px;
+    border: 1px solid #fff;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px); 
 }
