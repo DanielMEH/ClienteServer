@@ -1,70 +1,111 @@
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faFacebook, faTwitter, faLikedinIn, faGithub } from "@fortawesome/free-solid-svg-icons";
-import React from 'react'
+import { Link } from "react-router-dom";
+import {
+  
+  faGlobe,
+  faChevronRight
+} from "@fortawesome/free-solid-svg-icons";
+import React from "react";
+import "../assets/css/fuente.css";
 
-
-export const Footer=() =>{
+export const Footer = () => {
+  const fecha = new Date().getFullYear();
+  console.log(fecha);
   return (
-    <>          
-     <footer className="bg-white text-center lg:text-left">
-      <div className="container p-6">
-        <div className="flex justify-between p-10">
-          <div className="mb-6">
-            <h5 className="font-bold mb-2.5 text-gray-800">Siguenos en nuestras redes</h5>
-            <h5 className="text-[#1876F2] text-2xl font-medium">Stored</h5>
+    <>
+      <footer className="fotter_bg mt-36">
+        <div className=" max-w-7xl mx-auto ">
+        <div className="flex  justify-between">
+          <div className="Slogan">
+            <h2>Stored</h2>
+            <p>
+
+            </p>
           </div>
-          <div className="mb-6">
-            <h5 className="font-medium mb-2.5 text-gray-800">Más</h5>
-    
-            <ul className="list-none mb-0">
-              <li>
-                <a href="#!" className="text-[#545454]">Uso de cookies</a>
-              </li>
-              <li>
-                <a href="#!" className="text-[#545454]">Nuestra prensa</a>
-              </li>
-              <li>
-                <a href="#!" className="text-[#545454]">Novedades</a>
-              </li>
+          <div className="serviceSection m-3">
+            <ul>
+              <li className=" ">
+                <Link to={"/"} className="flex justify-between  items-center py-2 font-bold text-gray-800">
+                  <span>Contactanos</span> 
+                  
+                  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Servicios  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Documentación  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Recursos para desarroladores  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Certificaciones  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Blogs  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Compañia  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
             </ul>
           </div>
-    
-          <div className="mb-6">
-            <h5 className="font-medium mb-2.5 text-gray-800">Ayuda</h5>
-    
-            <ul className="list-none mb-0">
-              <li>
-                <a href="#!" className="text-[#545454]">Como funciona stored</a>
-              </li>
-              <li>
-                <a href="#!" className="text-[#545454]">Contáctanos</a>
-              </li>
-              <li>
-                <a href="#!" className="text-[#545454]">Trabaja con nosotros</a>
-              </li>
-              <li>
-                <a href="#!" className="text-[#545454]">Privacidad de datos</a>
-              </li>
-              <li>
-                <a href="#!" className="text-[#545454]">Quienes somos</a>
-              </li>
+          <div className="layautSection m-3">
+            <ul>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Quienes somos  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Ayuda  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Como funciona stored  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Privacidad de datos  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Información legal  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Terminos Y condiciones  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
+              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 font-bold text-gray-800"> Hola  <FontAwesomeIcon icon={faChevronRight}/></Link></li>
             </ul>
+
+          </div>
+        <div className="w-48">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex dicta temporibus ullam voluptatem aliquid ab nemo,
+           fuga distinctio omnis, numquam rem ad? Repellendus quas cum labore, architecto accusantium velit sed!
+        </div>
+        </div>
+        </div>
+        <div className="datacopy  ">
+          <div className="allsection flex justify-between items-center max-w-7xl mx-auto">
+            <div className="enalces_items">
+              <ul className="flex gap-8 p-4">
+                <li className="relative  text-[1.1rem] text-cyan-900">
+                  <span className="font-bold"> <FontAwesomeIcon icon={faGlobe}/> Español </span>
+                </li>
+                <li className="relative lik  text-[1.1rem] text-cyan-900">
+                  <Link to={"/"} className="text-underline">Política de privacidad </Link>
+                </li>
+                <li className="relative lik text-[1.1rem] text-cyan-900">
+                  <Link to={"/"} className="text-underline">Términos</Link>
+                </li>
+                <li className="relative lik text-[1.1rem] text-cyan-900">
+                  <Link to={"/"} className="text-underline">Trabaja con nosotros</Link>
+                </li>
+                <li className="relative  text-[1.1rem] text-cyan-900">
+                  <Link to={"/"}>Copyright &copy; {fecha} | Stored</Link>
+                </li>
+              </ul>
+            </div>
+            <div className="redes_Link flex">
+              <span><Link to={"/instagram"}>
+              <img width={"50px"} src="https://img.icons8.com/cute-clipart/64/null/instagram-new.png"/>
+              </Link></span>
+              <span>
+                <Link to={"/tittwe"}>
+                <img width={"50px"} src="https://img.icons8.com/cute-clipart/64/null/twitter.png"/>
+                </Link>
+              </span>
+              <span>
+                <Link to={"/facebook"}>
+                <img width={"50px"} src="https://img.icons8.com/cute-clipart/64/null/facebook.png"/>
+                </Link>
+              </span>
+              <span>
+                <Link to={"linkeding"}>
+                <img width={"50px"} src="https://img.icons8.com/cute-clipart/64/null/linkedin.png"/>
+                </Link>
+              </span>
+              <span>
+
+                <Link to={"github"}>
+                <img width={"50px"} src="https://img.icons8.com/cute-clipart/64/null/github.png"/>
+                </Link>
+              </span>
+              
+            </div>
           </div>
         </div>
-      </div>
-      <p className="text-[#545454] m-5">Vistas: 22,44</p>
-      <div className="flex justify-between text-gray-700 text-center p-4 border-t-4 border-[#DADADB]">
-        <p>
-          © Todos los derechhos reservados 2022 | Stored
-        </p>
-        <div className="flex justify-evenly w-96">
-          <a href="#!" className="text-[#545454]">Privacidad</a>
-          <a href="#!" className="text-[#545454]">Términos y condiciones</a>
-          <a href="#!" className="text-[#545454]">Seguridad</a>
-        </div>
-        </div>
-    </footer> 
+      </footer>
     </>
-  )
-}
+  );
+};

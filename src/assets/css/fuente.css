@@ -434,3 +434,9 @@ overflow-y: hidden;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px); 
 }
+.fotter_bg{
+
+    background: linear-gradient(320deg,#fff,  #ffffff, #A1C9FF, #fff, #fff);
+}
+
+
