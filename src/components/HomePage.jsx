@@ -133,7 +133,7 @@ Impulsamos en la inovacion
         <article className="w-[30rem] mt-20 "data-aos="flip-left">
         <p className="">
           <span className="text-[#3376F9] font2 ">Stored un servicio de alta calidad.
-          <span className="font3s">Nuestra plataforma impulsa la innovación con herramientas que
+          <span className="font3s"> Nuestra plataforma impulsa la innovación con herramientas que
              aumentan la seguridad de tu negocio</span>
          </span>
         </p>
@@ -157,19 +157,20 @@ Impulsamos en la inovacion
       <div className=" flex justify-center">
         <div className="mr-2">
           <Link to={"/login"}  className="
-           px-4 py-4 flex items-center text-lg  rounded text-white
-            bg-black hover:text-black hover:bg-transparent border-2 hover:border-2 hover:border-black
-             transition duration-150 ease-in-out drop-shadow-md ">
+           px-4 py-4 flex items-center text-xl rounded-xl  rounded text-white
+            bg-black duration-200    mb-12
+             transition duration-150 ease-in-out drop-shadow-md shadow-xl hover:shadow-gray-500/50">
               <span className="mt-1">Crear una cuenta en stored</span>
               <FontAwesomeIcon className="my-1 mx-2" icon={faChevronRight} /> </Link>
         </div>
         <div>
-          <Link to={"/signup"}  className="px-4 py-4 flex items-center  text-lg rounded 
-            text-black hover:bg-transparent border-2 hover:bg-black hover:text-white
-             border-black
-             transition duration-150 ease-in-out drop-shadow-md ">
-              <span className="mt-1">Iniciar sesión en stored</span>
-              <FontAwesomeIcon className="my-1 mx-2" icon={faChevronRight} /> </Link>
+          <Link to={"/signup"}  className=" px-4 py-3.5 flex items-center text-xl rounded rounded-xl items-center
+            text-lg rounded 
+            text-black hover:bg-transparent  border-2 shadow-lg hover:shadow-gray-500/50 
+             border-black mb-12
+             transition duration-150 ease-in-out drop-shadow-md  ">
+              <span className="mt-1 font-bold">Iniciar sesión en stored</span>
+              <FontAwesomeIcon className="my-1 mx-2 text-xl" icon={faChevronRight} /> </Link>
         </div>
       </div>
     </div>

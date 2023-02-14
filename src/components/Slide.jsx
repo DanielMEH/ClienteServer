@@ -21,6 +21,7 @@ export const Slide = () => {
     const prevImagen = ()=>{
         setImagenActual(imagenActaul === 0 ? cantidad - 1 : imagenActaul - 1)
     }
+    
   return (
     <div className='flex relative  justify-center  items-center h-96 max-w-7xl mx-auto mt-36'>
         
