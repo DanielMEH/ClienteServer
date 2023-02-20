@@ -158,22 +158,22 @@ Impulsamos en la inovacion
       </div> 
     </div>
     <div className="text-center fuente-t1 ">
-    Fácil para que cualquier persona pueda utilizarlo sin dificultad
+    Comodo para que cualquier persona pueda utilizarlo sin dificultad
       </div>
     <div className="max-w-7xl mx-auto">
       
       <div className=" flex justify-center">
         <div className="mr-2">
           <Link to={"/login"}  className="
-           px-4 py-4 flex items-center text-xl rounded-xl  rounded text-white
+           px-4 py-4 flex items-center text-xl rounded-xl  text-white
             bg-black duration-200    mb-12
-             transition duration-150 ease-in-out drop-shadow-md shadow-xl hover:shadow-gray-500/50">
+             transition  ease-in-out drop-shadow-md shadow-xl hover:shadow-gray-500/50">
               <span className="mt-1">Crear una cuenta en stored</span>
               <FontAwesomeIcon className="my-1 mx-2" icon={faChevronRight} /> </Link>
         </div>
         <div>
-          <Link to={"/signup"}  className=" px-4 py-3.5 flex items-center text-xl rounded rounded-xl items-center
-            text-lg rounded 
+          <Link to={"/signup"}  className=" px-4 py-3.5 flex items-center rounded-xl 
+            text-lg 
             text-black hover:bg-transparent  border-2 shadow-lg hover:shadow-gray-500/50 
              border-black mb-12
              transition duration-150 ease-in-out drop-shadow-md  ">
