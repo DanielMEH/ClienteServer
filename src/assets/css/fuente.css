@@ -379,7 +379,7 @@ overflow-y: hidden;
 
 }
 .bg-slik{
-    background-image: url("../img/wabesection.png");
+   
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
@@ -434,6 +434,9 @@ overflow-y: hidden;
     border: 1px solid #fff;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px); 
+}
+.bg-line-col{
+    background: linear-gradient(180deg, #fff, rgb(52 211 153),rgb(52 211 153), #fff);
 }
 .fotter_bg{
 

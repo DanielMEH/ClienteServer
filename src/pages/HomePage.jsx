@@ -12,9 +12,9 @@ import imagen4 from "../assets/img/card1.jpg";
 import imagen5 from "../assets/img/card2.jpg";
 import imagen6 from "../assets/img/card03.jpg";
 import imagen7 from "../assets/img/estadisticaStored.png"
-import Header from "./Header";
+import Header from "../components/Header";
 import "../assets/css/fuente.css";
-import { Footer } from "./Footer";
+import { Footer } from "../components/Footer";
 import { Link } from "react-router-dom";
 
 export const HomePage=() =>{
@@ -22,7 +22,9 @@ export const HomePage=() =>{
     duration: 3000
 
   });
+  document.body.style  ="overflow-x: hidden"
   return (
+  
     <>
     <div className="">
     <Header/>
@@ -63,7 +65,7 @@ export const HomePage=() =>{
       <div className="img-sec1">
       <FontAwesomeIcon icon={faBolt} className="text-[#fde047] absolute top-20 left[10rem] m-1" />
         <img src={curba2} alt="" className="absolute bottom-[-16.9rem] left-[-6rem] w-36" />
-      <img src="https://res.cloudinary.com/dkqp3wkbi/image/upload/v1676216582/kodiarLogo/mockuoFrame_hbrvph.png" className="h-96 rounded  p-10" type="imagen" title="Stored" alt="Stored" />
+      <img src="https://res.cloudinary.com/dkqp3wkbi/image/upload/v1676216582/kodiarLogo/mockuoFrame_hbrvph.png" className="h-96 rounded  p-10" type="imagen" title="Stored" alt="Stored" style={{marginBottom:'10rem'}}/>
       </div>
         <div className="circle1"data-aos="zoom-in-left"></div>
         <div className="circle2"data-aos="zoom-in-right"></div>
@@ -86,45 +88,51 @@ export const HomePage=() =>{
       <div className="text-center fuente-t1 ">
 Que esperas de nuestra plataforma?
       </div>
-    <div className="grid max-w-7xl mx-auto relative grid-cols-3  gap-5">
-      <div className="line1 absolute  bg-emerald-400 shol left-[-30rem] w-1 ml-96 h-[50rem] "data-aos="fade-up"></div>
-      <section className="   rounded shadow-2xl  "data-aos="fade-right">
+    <div className="relative">
+      <div className="line1 absolute w-1 mx-56   bg-line-col shol top-0 left-0 h-[50rem] "data-aos="fade-up"></div>
+    <div className="grid max-w-7xl mx-auto  grid-cols-3  gap-5">
+      <section className="   rounded shadow-2xl cursor-pointer p-1 "data-aos="fade-right">
         <div className="relative ">
           <div className="">
             <img className=" w-full" src={imagen4} alt="stored"/>
           </div>
         </div>
         <div className="    ">
-          <p className="text-gray-800   mx-3 text-center text-xl border-t border-t-slate-200">Llevaras un registro de tus productos de entrada y salidas
-           mediante reportes que estaran pendiente de tu inventario </p>
+          <p className="text-gray-800 rounde-sm  mx-3 text-center text-xl border-t border-t-slate-200">
+            Llevaras un registro de tus productos de entrada y salidas,
+           mediante reportes que estaran pendiente de tu inventario. </p>
         </div>
       </section>
-      <section className="   rounded shadow-2xl " data-aos="fade-up">
+      <section className="   rounded shadow-2xl cursor-pointer p-1" data-aos="fade-up">
         <div className="relative ">
           <div className=" ">
             <img className="w-full" src={imagen5} alt=""/>
           </div>
         </div>
         <div className="container paragraph  ">
-          <p className="text-gray-800   mx-3 text-center text-xl border-t border-t-slate-200">Tu información esta segura, nos importa de que tus datos no se pierdan y no hallan fallos al momento de utilizar nuesto servicio</p>
+          <p className="text-gray-800 rounde-sm  mx-3 text-center text-xl border-t border-t-slate-200">
+            Tu información esta segura, nos importa de que tus datos no se pierdan y no hallan fallos
+             al momento de utilizar nuesto servicio.</p>
         </div>
       </section>
-      <section className="  rounded shadow-2xl  "data-aos="fade-left">
+      <section className="  rounded shadow-2xl cursor-pointer p-1 "data-aos="fade-left">
         <div className="relative ">
           <div className=" ">
             <img className="w-full" src={imagen6} alt=""/>
           </div>
         </div>
         <div className="container paragraph  ">
-          <p className="text-gray-800   mx-3 text-center text-xl border-t border-t-slate-200">Podras crear usuarios que ayude llevar un 
-          mejor control de  tu inventario a travez de roles que faciliten el manejo de tu negocio </p>
+          <p className="text-gray-800   mx-3 text-center text-xl border-t border-t-slate-200">
+            Podras crear usuarios que ayude llevar un 
+          mejor control de  tu inventario, a travez de roles que faciliten el manejo de tu negocio. </p>
         </div>
       </section>
+    </div>
     </div>
     <div className="text-center fuente-t1 ">
 Impulsamos en la inovacion
       </div>
-    <div className="flex justify-between bgr">
+    <div className="flex justify-around bgr">
       <div className=" flex relative ">
         <div className="h-3/5 relative w-1 ml-16 mt-4 mr-5 colorbgline">
         </div>

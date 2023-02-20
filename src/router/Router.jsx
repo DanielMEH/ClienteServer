@@ -4,7 +4,7 @@ import { AuthUser } from "../components/AuthUser";
 import { Signup } from "../components/Signup";
 import { UserContextData } from "../hooks/context/UserContextData"
 import { Admin } from "../pages/Admin/Admin";
-import { HomePage } from "../components/HomePage";
+import { HomePage } from "../pages/HomePage";
 import { ProtectedRouter } from "../auth/ProtectedRouter";
 import RecoveryPass from "../pages/RecoveryPass";
 import CodePassword from "../pages/CodePassword";
