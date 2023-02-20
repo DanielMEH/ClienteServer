@@ -16,6 +16,7 @@ import grid from "../assets/icons/grid.svg";
 import harddrive from "../assets/icons/hard-drive.svg";
 import truck from "../assets/icons/truck.svg";
 import cloceSession from "../assets/icons/log-out.svg";
+import compras from "../assets/icons/shopping-cart.svg"
 
 export const MenuLateral = () => {
   const hundleClick = () => {
@@ -27,16 +28,20 @@ export const MenuLateral = () => {
   };
   const fecha = new Date().getFullYear();
   return (
-    <div className="fixed 
-    hover:scrollbar
-     hover:scrollbar-thumb-gray-200 
-    hover:scrollbar-track-gray-100 
-    hover:scrollbar-w-0
-     hover:scrollbar-thumb-rounded-full
-    hover:scrollbar-track-rounded-full
-    scrollbar scrollbar-thumb-gray-200 scrollbar-track-gray-100 scrollbar-w-0 scrollbar-thumb-rounded-full scrollbar-track-rounded-full
-    h-full  w-60 bg-white shadow-2xl shadow-teal-300/20  ">
-      <div className="contenedor__mL h-full flex flex-col gap-1 justify-between">
+    <div className="
+
+    scrollbar-thumb-gray-200 
+  scrollbar-track-gray-100 
+  scrollbar-w-0
+    scrollbar-thumb-rounded-full
+  scrollbar-track-rounded-full
+    scrollbar-w-0 
+    scrollbar-thumb-rounded-full 
+    scrollbar-track-rounded-full 
+
+   
+    h-screen  w-64  b shadow-2xl shadow-teal-300/10 z-10  ">
+      <div className="contenedor__mL h-full  flex flex-col gap-1  justify-between">
         <div className="section-1">
           <h2 className="text-center sticky top-0 bg-white z-20 block text-xl font-bold py-2 border-b text-neutral-800">
             Identificate
@@ -296,7 +301,31 @@ export const MenuLateral = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink
+                <NavLink to={"/compras"}
+                  
+                  className={({ isActive }) =>
+                    isActive
+                      ? `
+                        flex 
+                        
+                        items-center 
+                         mx-1 bg-gray-100 my-[2px] p-2 font-medium text-black
+                         rounded `
+                      : `flex 
+                         hover:bg-gray-100
+                         items-center 
+                          mx-1 my-[2px] p-2 font-medium text-black
+                          rounded `
+                  }
+                >
+                  <img src={compras} alt="" width={20} />
+                  <div className="NavLinks6 pt-[2px] ml-3 whitespace-nowrap">
+                    Compras
+                  </div>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/login"
                   
                   className={({ isActive }) =>
                     isActive
@@ -330,7 +359,7 @@ export const MenuLateral = () => {
         <div className="section-2">
           <div className="items-2">
             <ul>
-              <li className="mt-20">
+              <li className="mt-30">
                 
               </li>
               <li>
@@ -432,6 +461,8 @@ export const MenuLateral = () => {
           </div>
         </div>
       </div>
+        
+      
     </div>
   );
 };
