@@ -1,8 +1,13 @@
 import React from 'react'
-import {UserRegister} from '../../components/UserRegister'
+import { MenuLateral } from '../../components/MenuLateral'
+
 
 export const Admin = () => {
     return (
-        <div><UserRegister/></div>
+        <div className='bg-[#eaf2fe] w-full'>
+
+            <MenuLateral/>
+            dfdf
+        </div>
     )
 }

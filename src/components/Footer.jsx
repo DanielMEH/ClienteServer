@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import {
   
   faGlobe,
-  faChevronRight
+  
 } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import "../assets/css/fuente.css";
 
 export const Footer = () => {
   const fecha = new Date().getFullYear();
-  console.log(fecha);
+
   return (
     <>
       <footer className="fotter_bg mt-36 pt-10">
