@@ -27,17 +27,12 @@ export const MenuLateral = () => {
     window.location.href = "/login";
   };
   const fecha = new Date().getFullYear();
+
+  document.body.style.overflow = "hidden";
   return (
     <div className="
 
-    scrollbar-thumb-gray-200 
-  scrollbar-track-gray-100 
-  scrollbar-w-0
-    scrollbar-thumb-rounded-full
-  scrollbar-track-rounded-full
-    scrollbar-w-0 
-    scrollbar-thumb-rounded-full 
-    scrollbar-track-rounded-full 
+    selft_scroll
 
    
     h-screen  w-64  b shadow-2xl shadow-teal-300/10 z-10  ">
