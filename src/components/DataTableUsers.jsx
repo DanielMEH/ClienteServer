@@ -66,14 +66,14 @@ export const DataTableUsers = () => {
         style={{ height: 520, width: "80%" }}
       >
         <AgGridReact
-            localeText={AG_GRID_LOCALE_EN}
-            ref={gridRef}
+          localeText={AG_GRID_LOCALE_EN}
+          ref={gridRef}
           columnDefs={columnDefs}
           rowData={gridApi}
           defaultColDef={defaultColDef}
           animateRows={true}
           rowGroupPanelShow="always"
-            pivotPanelShow="always"
+          pivotPanelShow="always"
          
         ></AgGridReact>
       </div>
