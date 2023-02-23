@@ -55,7 +55,7 @@ export const AuthUser = () => {
     <>
       <ToastContainer />
     <Header />
-      <div className="form_Login lg:mt-36 mx-auto rounded-md border w-4/5 sm:3/4 animate__animated animate__fadeIn bg-white form md:w-[50rem]   my-9 drop-shadow-2xl ">
+      <div className="form_Login  mx-auto rounded-md border w-4/5 sm:3/4 animate__animated animate__fadeIn bg-white form md:w-[50rem]   my-9 drop-shadow-2xl ">
         <div className="login bg-white z-20 relative rounded-md ">
           <div className="flex item-center justify-center flex-col">
             <div className=" absolute p-2 left-0 text-3xl text-gray-600 ">

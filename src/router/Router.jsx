@@ -20,7 +20,6 @@ import { Provider } from "../layout/Provider";
 import { Analitycs } from "../layout/Analitycs";
 import { Perfil } from "../layout/Perfil";
 import { Shope } from "../layout/Shope";
-import { MenuLateral } from "../components/MenuLateral";
 export const Router = () => {
   const token = localStorage.getItem("secure_token");
   const perfil_rol = localStorage.getItem("perfil_rol");
