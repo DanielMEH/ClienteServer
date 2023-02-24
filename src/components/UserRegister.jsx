@@ -54,7 +54,7 @@ export const UserRegister = ({estado=false }) => {
         
           <Formik
 
-            initialValues={{ email: "", password: "" ,rol:"", estado:""}}
+            initialValues={{ email: "", password: "" ,modulo:"", estado:""}}
             validationSchema={Yup.object({
               email: Yup.string()
                 .email("El email no es valido")
@@ -66,8 +66,18 @@ export const UserRegister = ({estado=false }) => {
             onSubmit={async (values) => {
                
               let response = await getUserRegister(values);
-                if (response.status === 200) {
+                if (response.status === 201) {
                   toast.success("Usuario creado con exito", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
+                }else{
+                  toast.warning("!Ups! Hubo un error inesperado", {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -162,14 +172,14 @@ export const UserRegister = ({estado=false }) => {
 <div className="list_options flex justify-between  items-center">
 <section>
 <label
-                htmlFor="rol"
+                htmlFor="modulo"
                 className="block mb-2 text-sm font-medium text-gray-900 mx-2 py-1"
               >
                 Seleccionar modulo
               </label>
-              <Field as="select" name="rol" className="w-4/5 mx-2  rounded cursor-pointer  py-2 outline-none border border-[#1876F2] ">
-            <option value="Analista">inventario</option> 
+              <Field as="select" name="modulo" className="w-4/5 mx-2  rounded cursor-pointer  py-2 outline-none border border-[#1876F2] ">
             <option value="usuario">usuario</option>
+            <option value="inventario">inventario</option> 
              
            </Field>
 </section>
