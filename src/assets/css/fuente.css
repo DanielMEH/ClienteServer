@@ -320,8 +320,8 @@ overflow-y: hidden;
     position: relative;
     border-radius: 20px;
     border: 1px solid #fff;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+  
+   
 }
 .circlepath{
     
@@ -447,7 +447,10 @@ overflow-y: hidden;
 
 .selft_scroll{
 
-    overflow-y: scroll;
+    overflow-y: auto;
+    height: fit-content;
+    max-height: 100vh;
+    
 }
 .selft_scroll:-webkit-full-screen{
     overflow-y: scroll;
@@ -474,4 +477,10 @@ overflow-y: hidden;
 }
 .ag-theme-alpine .ag-header-cell {
     font-size: 13px;
+}
+.self_conte_fond{
+
+    background: #f4f8ffdd;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

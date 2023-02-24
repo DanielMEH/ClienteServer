@@ -28,12 +28,11 @@ export const MenuLateral = () => {
   };
   const fecha = new Date().getFullYear();
 
-  document.body.style.overflow = "hidden";
   return (
     <div className="
 
     selft_scroll
-
+    sticky top-0
    
     h-screen  w-64  b shadow-2xl shadow-teal-300/10 z-10  ">
       <div className="contenedor__mL h-full  flex flex-col gap-1  justify-between">
