@@ -14,13 +14,14 @@ import { ToastContainer, toast } from "react-toastify";
 import * as Yup from "yup";
 import "animate.css";
 import { Link } from "react-router-dom";
+import "../assets/css/styleSlider.css"
 
 export const UserRegister = ({estado=false }) => {
   
 
   const [typeInput, setTypeInput] = useState(true);
   const [estados, setEstado] = useState(false);
-  const [spiner, setSpiner] = useState(true);
+  const [spiner, setSpiner] = useState(false);
   const { getUserRegister } = usePostAuth();
   const handleShow = () => {
     setEstado(false) 
@@ -54,7 +55,7 @@ export const UserRegister = ({estado=false }) => {
         
           <Formik
 
-            initialValues={{ email: "", password: "" ,rol:"", estado:""}}
+            initialValues={{ email: "", password: "" ,modulo:"", estado:""}}
             validationSchema={Yup.object({
               email: Yup.string()
                 .email("El email no es valido")
@@ -66,8 +67,8 @@ export const UserRegister = ({estado=false }) => {
             onSubmit={async (values) => {
                
               let response = await getUserRegister(values);
-                if (response.status === 200) {
-                  toast.success("Usuario creado con exito", {
+                if (response.status === 201) {
+                 await toast.success("Usuario creado con exito", {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -76,6 +77,18 @@ export const UserRegister = ({estado=false }) => {
                     draggable: true,
                     progress: undefined,
                   });
+                 await setSpiner(false)
+                }else{
+                 await toast.warning("!Ups! Hubo un error inesperado o el correo ya existe", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
+                 await setSpiner(false)
                 }
 
             }
@@ -162,14 +175,14 @@ export const UserRegister = ({estado=false }) => {
 <div className="list_options flex justify-between  items-center">
 <section>
 <label
-                htmlFor="rol"
+                htmlFor="modulo"
                 className="block mb-2 text-sm font-medium text-gray-900 mx-2 py-1"
               >
                 Seleccionar modulo
               </label>
-              <Field as="select" name="rol" className="w-4/5 mx-2  rounded cursor-pointer  py-2 outline-none border border-[#1876F2] ">
-            <option value="Analista">inventario</option> 
+              <Field as="select" name="modulo" className="w-4/5 mx-2  rounded cursor-pointer  py-2 outline-none border border-[#1876F2] ">
             <option value="usuario">usuario</option>
+            <option value="inventario">inventario</option> 
              
            </Field>
 </section>
@@ -204,11 +217,14 @@ export const UserRegister = ({estado=false }) => {
               </div>
               
 
-              <div className="text-center mt-5">
-                <button
+              <div className="bg-[#009AFA]  overflow-hidden relative justify-center text-center mx-auto flex w-3/5 px-6 py-5 text-white  text-sm  rounded-full shadow-md hover:bg-[#009AFA] hover:shadow-lg focus:shadow-lg
+                        focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out  mb-3">
+             
+             <div className={spiner ?"lds-ring":"hidden"}><div></div><div></div><div></div><div></div></div>
+             
+                <button onClick={()=>setSpiner(true)}
                   type="submit"
-                  className="bg-[#009AFA] inline-block px-6 py-2.5 w-40 rounded-full text-white  text-sm  rounded shadow-md hover:bg-[#009AFA] hover:shadow-lg focus:shadow-lg
-                        focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full mb-3"
+                  className=" bg-[#009AFA] w-full z-10 absolute h-full top-0"
                 >
                   Crear usuario
                 </button>

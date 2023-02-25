@@ -56,7 +56,7 @@ export const AG_GRID_LOCALE_EN = {
     filters: 'Filtros',
 
     // columns tool panel
-    pivotMode: 'Modo pivote',
+    pivotMode: 'Modo privado',
     groups: 'Grupos de filas',
     rowGroupColumnsEmptyMessage: 'Arrastre aqui para establecer grupos de filas',
     values: 'Valores',

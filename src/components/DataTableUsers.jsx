@@ -14,7 +14,14 @@ import plus from "../assets/icons/plus.svg";
 import { AG_GRID_LOCALE_EN } from "../locale/locale";
 import OpcionTabledCrud from "./OpcionTabledCrud";
 import UserRegister from "./UserRegister";
+import { checkboxSelection } from "./ChackSelection";
+import { headerCheckboxSelection } from "./ChackSelection";
+import { setPrinterFriendly} from "./ChackSelection";
+import {ChackSelection} from "./ChackSelection";
+import { setNormal} from "./ChackSelection";
 export const DataTableUsers = () => {
+
+  const defaultColDef  = ChackSelection()
   const [gridApi, setGridApi] = useState(null);
 
   const gridRef = useRef();
@@ -24,34 +31,15 @@ export const DataTableUsers = () => {
       "https://jsonplaceholder.typicode.com/comments"
     );
     return await response.data;
-  },[]);
-  const setPrinterFriendly = (api) => {
-    const eGridDiv = document.querySelector("#myGrid");
-    eGridDiv.style.width = "";
-    eGridDiv.style.height = "";
-    api.setDomLayout("print");
-  };
-  const setNormal = (api) => {
-    const eGridDiv = document.querySelector("#myGrid");
-    eGridDiv.style.width = "700px";
-    eGridDiv.style.height = "600px";
-    api.setDomLayout();
-  };
+  }, []);
+  
   const [stateModel, StateModel] = useState(false);
   useEffect(() => {
     getData().then((data) => {
       setGridApi(data);
     });
-  }, []);
-  var checkboxSelection = function (params) {
-    // we put checkbox on the name if we are not doing grouping
-    return params.columnApi.getRowGroupColumns().length === 0;
-  };
-
-  var headerCheckboxSelection = function (params) {
-    // we put checkbox on the name if we are not doing grouping
-    return params.columnApi.getRowGroupColumns().length === 0;
-  };
+  });
+ 
 
   const [columnDefs, setColumnDefs] = useState([
     {
@@ -65,7 +53,8 @@ export const DataTableUsers = () => {
     {
       headerName: "Correo",
       field: "email",
-      chartDataType: 'email'
+      chartDataType: 'email',
+      
     },
     {
       headerName: "Identificador",
@@ -76,6 +65,7 @@ export const DataTableUsers = () => {
     {
       headerName: "Descripcion",
       field: "body",
+      chartDataType: 'body'
     },
     {
       headerName: "Unico",
@@ -88,20 +78,7 @@ export const DataTableUsers = () => {
       cellRenderer: OpcionTabledCrud,
     },
   ]);
-
-  const defaultColDef = useMemo(() => {
-    return {
-      sortable: true,
-      resizable: true,
-      filter: true,
-      floatingFilter: true,
-      flex: 1,
-      minWidth: 100,
-      localeText: AG_GRID_LOCALE_EN,
-      editable: true,
-      tooltipComponent: "customTooltip",
-    };
-  }, []);
+ 
 
   const handleShowModel = () => {
     StateModel(!stateModel);
@@ -121,15 +98,12 @@ export const DataTableUsers = () => {
       setNormal(api);
     }, 2000);
   }, []);
-  const popupParent = useMemo(() => {
-    return document.body;
-  }, []);
   const onChart1 = useCallback(() => {
     var params = {
       cellRange: {
         rowStartIndex: 0,
-        rowEndIndex: 3,
-        columns: [ 'id','postId','name', 'email', 'body'],
+        rowEndIndex: 4,
+        columns: ['id', 'postId','name',],
       },
       chartType: 'groupedColumn',
       chartThemeName: 'ag-vivid',
@@ -137,7 +111,7 @@ export const DataTableUsers = () => {
         common: {
           title: {
             enabled: true,
-            text: 'Estadisticas de usuarios',
+            text: 'Estadisticas de los 5 primeros usuarios',
           },
         },
       },
@@ -148,7 +122,7 @@ export const DataTableUsers = () => {
   const onChart2 = useCallback(() => {
     var params = {
       cellRange: {
-        columns: [ 'id','postId','name', 'email', 'body'],
+        columns: ['id', 'postId','name',],
       },
       chartType: 'groupedBar',
       chartThemeName: 'ag-pastel',
@@ -167,21 +141,24 @@ export const DataTableUsers = () => {
     };
     gridRef.current.api.createRangeChart(params);
   }, []);
+
+  
+  
+
   const onFilterTextBoxChanged = useCallback(() => {
     gridRef.current.api.setQuickFilter(
       document.getElementById('filter-text-box').value
     );
   }, []);
-
   return (
     <>
       <UserRegister estado={stateModel} />
-      <div className="panel_opciones bg-white w-[90%] mx-auto mt-10 mb-2 rounded-md p-4">
+      <div className="panel_opciones bg-white w-[90%] mx-auto mt-10 mb-1  rounded-md p-4">
         <div className="plus_panel flex justify-between items-center">
         <section className="items-center">
             Herramientas
           </section>
-          <section>hellow</section>
+          <section><span>Activos 0 </span> <span>Inactivos 0</span></section>
           <section className="flex ">
           <button onClick={onBtnExport} className="flex items-center border mx-1 p-1 rounded-md">
             <span>
@@ -259,53 +236,53 @@ export const DataTableUsers = () => {
         </div>
       </div>
       <div className="buttons">
-        <div className="anality_ panel w-[90%] mx-auto flex items-center justify-between">
-          <div className="cell_panel flex">
-          <button onClick={onChart2} className="bg-white hover:shadow-lg inline-block mx-1 mb-4 rounded-xl p-2">
-           <div className="flex items-center">
-           <span className="mx-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 16 16">
-              <path fill="#3498DB" fillRule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/></svg>
-            </span>
-            <span className="py-2 block">Estadisticas de todos los usuarios</span>
-           </div>
-            </button>
-          <button onClick={onChart1} className="bg-white hover:shadow-lg inline-block mx-1 mb-4 rounded-xl p-2">
-           <div className="flex items-center">
-           <span className="mx-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 16 16">
-              <path fill="#3498DB" fillRule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/></svg>
-            </span>
-            <span className="py-2 block">Estadisticas de los 5 primeros usuarios</span>
-           </div>
-            </button>
-            
+      
+      </div>
+        <div className="panel_second_h w-[90%] mx-auto flex justify-between items-center">
+       <div className="panel_analitic">
+       <button onClick={onChart1} className="bg-white p-3 hover:shadow-xl my-2 rounded-lg mx-1">
+          
+          <div className="flex">
+          <span className="mx-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 16 16">
+            <path fill="#3498DB" fillRule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/></svg>
+          </span>
+          <span>
+          Estadisticas de los primeros 5 usuarios
+
+          </span>
           </div>
-          <div className="cell_panel">
-            
+          
+          </button>
+          <button onClick={onChart2} className="bg-white p-3 hover:shadow-xl my-2 rounded-lg mx-1">
+          <div className="flex">
+          <span className="mx-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 16 16">
+            <path fill="#3498DB" fillRule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/></svg>
+          </span>
+          <span>
+         Todos los usuarios
+
+          </span>
           </div>
-          <div className="cell_panel">
-            <div className="search_panel flex border rounded-full items-center overflow-hidden bg-white shadow-sm">
-              <div className="search_icon p-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
-                <g transform="translate(24 0) scale(-1 1)"><path fill="#BFC9CA" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"/></g></svg>
-              </div>
-              <div className="inout">
-          <input
+            </button>
+       </div>
+       <div className="search bg-white flex items-center p-2 rounded-full">
+        <div className="icon_search mx-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 16 16"><g transform="translate(16 0) scale(-1 1)">
+          <path fill="#ABB2B9" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0a5.5 5.5 0 0 1 11 0z"/></g></svg>
+        </div>
+        <div className="input_panel">
+        <input
             type="text"
             id="filter-text-box"
             placeholder="Buscar..."
             onInput={onFilterTextBoxChanged}
-            className="p-2 w-full outline-none"
+            className="outline-none"
           />
-
-              </div>
-            </div>
-          </div>
-         
-
         </div>
-      </div>
+       </div>
+        </div>
       <div
         className="ag-theme-alpine shadow-2xl mx-auto "
         id="myGrid"
@@ -325,22 +302,13 @@ export const DataTableUsers = () => {
           sideBar={true}
           icons={true}
           pagination={true}
-          paginationPageSize={20}
+          paginationPageSize={10}
           paginateChildRows={true}
           suppressRowClickSelection={true}
           groupSelectsChildren={true}
           rowSelection={"multiple"}
           enableCharts={true}
-          popupParent={popupParent}
           cacheQuickFilter={true}
-          enableCellTextSelection={true}
-          maxConcurrentDatasourceRequests={1}
-          suppressAggFuncInHeader={true}
-          purgeClosedRowNodes={true}
-          cacheBlockSize={20}
-          tooltipShowDelay={0}
-          tooltipHideDelay={2000}
-          
         ></AgGridReact>
       </div>
     </>

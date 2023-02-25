@@ -14,8 +14,8 @@ export const Usuarios = () => {
 
       <div className="content_users m-7">
         <div className="content_users_title">
-          <h2 className='text-3xl font-bold text-gray-700 font-sans mx-20'>Usuarios</h2>
-          <p className='text-xl text-gray-600 mx-20'>Crea, administra y haz un seguimiento de  tus usuarios en un solo lugar.</p>
+          <h2 className='text-4xl font-bold text-gray-700 font-sans mx-20'>Usuarios</h2>
+          <p className='text-xl text-gray-600 mx-20'>Crea, administra y haz un seguimiento del rendimiento de los tus usuarios en un solo lugar.</p>
              
         </div>
 
