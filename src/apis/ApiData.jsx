@@ -17,4 +17,19 @@ export const PostDataUserRegister = async (postDataUserRegister) => await axios.
         "acc-token-data":accessToken
     }
     })
-
+    export const UploadcsvUsuario = async (formDataCsv,archivousuariocsv) => await axios.post(`${urlServer}/uploadcsvUsers`, { formDataCsv,archivousuariocsv},{
+        headers: {
+            "acc-token-data":accessToken,
+            "Content-Type": "multipart/form-data"
+            
+        }
+    })
+    
+    export const getUsersAdmin = async (isAllowedToken) => await axios.get(`${urlServer}/getUsersData/${isAllowedToken}`,)
+    export const getDataCountUsersAdmin = async (isAllowedToken) => await axios.get(`${urlServer}/countUsers/${isAllowedToken}`,)
+    
+export const DeleteuserPost = async (deleteData) => await axios.post(`${urlServer}/deleteUser`, {deleteData},{
+    headers: {
+        "isallowed-x-token":accessToken
+    }
+    })

@@ -9,20 +9,20 @@ import {
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import x from "../assets/icons/x.svg"
-import { usePostAuth } from "../hooks/context/UserContextData";
+import { useGetUsers } from "../hooks/context/GetUsersContext";
 import { ToastContainer, toast } from "react-toastify";
 import * as Yup from "yup";
 import "animate.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import "../assets/css/styleSlider.css"
 
 export const UserRegister = ({estado=false }) => {
   
-
+  const navigate = useNavigate(); 
   const [typeInput, setTypeInput] = useState(true);
   const [estados, setEstado] = useState(false);
   const [spiner, setSpiner] = useState(false);
-  const { getUserRegister } = usePostAuth();
+  const { UserRegister } = useGetUsers();
   const handleShow = () => {
     setEstado(false) 
     console.log(estado);
@@ -66,11 +66,11 @@ export const UserRegister = ({estado=false }) => {
             })}
             onSubmit={async (values) => {
                
-              let response = await getUserRegister(values);
+              let response = await UserRegister(values);
                 if (response.status === 201) {
                  await toast.success("Usuario creado con exito", {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 1000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -78,6 +78,12 @@ export const UserRegister = ({estado=false }) => {
                     progress: undefined,
                   });
                  await setSpiner(false)
+                 setEstado(false)
+                 setTimeout(() => {
+                  navigate("/usuarios")
+                 },2000)
+                
+                 
                 }else{
                  await toast.warning("!Ups! Hubo un error inesperado o el correo ya existe", {
                     position: "top-right",
@@ -89,6 +95,7 @@ export const UserRegister = ({estado=false }) => {
                     progress: undefined,
                   });
                  await setSpiner(false)
+                 
                 }
 
             }

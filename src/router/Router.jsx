@@ -20,6 +20,8 @@ import { Provider } from "../layout/Provider";
 import { Analitycs } from "../layout/Analitycs";
 import { Perfil } from "../layout/Perfil";
 import { Shope } from "../layout/Shope";
+import { Prueba } from "../layout/Prueba";
+import { GetUsersContext } from "../hooks/context/GetUsersContext";
 export const Router = () => {
   const token = localStorage.getItem("secure_token");
   const perfil_rol = localStorage.getItem("perfil_rol");
@@ -33,8 +35,11 @@ export const Router = () => {
   return (
     <>
       <UserContextData>
-        
+      <GetUsersContext>
+       
+       
         <Routes>
+        <Route path="/prueba" element={<Prueba />} />
           <Route path="*" element={<NotFount />} />
 
           <Route path="/login" element={<AuthUser />} />
@@ -48,6 +53,7 @@ export const Router = () => {
           <Route path="/signup" element={<Signup />} />
           
           <Route index element={<HomePage />} />
+          
           <Route
             element={
               <ProtectedRouter
@@ -208,7 +214,12 @@ export const Router = () => {
               </ProtectedRouter>
             }
           />
+          
+
+      
+
         </Routes>
+          </GetUsersContext>
       </UserContextData>
     </>
   );

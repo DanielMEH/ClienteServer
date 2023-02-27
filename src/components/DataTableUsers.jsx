@@ -1,13 +1,13 @@
 import React, {
-  useEffect,
-  useMemo,
   useRef,
   useState,
   useCallback,
+  useEffect,
 } from "react";
+import moment from 'moment-with-locales-es6';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import axios from "axios";
+
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-enterprise";
 import plus from "../assets/icons/plus.svg";
@@ -19,58 +19,71 @@ import { headerCheckboxSelection } from "./ChackSelection";
 import { setPrinterFriendly} from "./ChackSelection";
 import {ChackSelection} from "./ChackSelection";
 import { setNormal} from "./ChackSelection";
+import UploadExcel from "./UploadExcel";
+import {useGetUsers} from "../hooks/context/GetUsersContext"
+
+moment.locale("es");
+
 export const DataTableUsers = () => {
 
-  const defaultColDef  = ChackSelection()
-  const [gridApi, setGridApi] = useState(null);
+  const {getUsersAdmins,getUsers,getCountData,getCountDateUsers,
+    getActivosUsers,
+    getInactivosUsers } = useGetUsers()
+  console.log();
 
-  const gridRef = useRef();
-  
-  const getData =  useCallback(async () => {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/comments"
-    );
-    return await response.data;
-  }, []);
-  
-  const [stateModel, StateModel] = useState(false);
   useEffect(() => {
-    getData().then((data) => {
-      setGridApi(data);
-    });
-  });
+    getUsersAdmins()
+    getCountData()
+
+  },[])
  
+  const defaultColDef  = ChackSelection()
+  const gridRef = useRef();
+
+  const [stateModel, StateModel] = useState(false);
+  const [ExcelModel, setExcelModel] = useState(false);
+
 
   const [columnDefs, setColumnDefs] = useState([
     {
-      headerName: "Nombre",
-      field: "name",
+      headerName: "Correo",
+      field: "correo",
       rowDrag: true,
       checkboxSelection: checkboxSelection,
       headerCheckboxSelection: headerCheckboxSelection,
-      chartDataType: 'name'
+      chartDataType: 'name',
+      filter: "agTextColumnFilter",
     },
     {
-      headerName: "Correo",
-      field: "email",
+      headerName: "Contraseña",
+      field: "password",
       chartDataType: 'email',
+      filter: "agTextColumnFilter",
       
     },
     {
       headerName: "Identificador",
-      field: "id",
-      filter: "agNumberColumnFilter",
+      field: "idAccount",
+      filter: "agTextColumnFilter",
       chartDataType: 'id'
     },
     {
-      headerName: "Descripcion",
-      field: "body",
-      chartDataType: 'body'
+      headerName: "Hora de creacion de cuenta",
+      field: "hora",
+      chartDataType: 'body',
+      filter: "agTextColumnFilter",
     },
     {
-      headerName: "Unico",
-      field: "postId",
-      chartDataType: 'postId'
+      headerName: "Fecha de creación",
+      field: "fecha",
+      chartDataType: 'postId',
+      filter: "agTextColumnFilter",
+    },
+    {
+      headerName: "Estado",
+      field: "estado",
+      chartDataType: 'postId',
+      filter: "agTextColumnFilter",
     },
     {
       headerName: "Opciones",
@@ -82,6 +95,9 @@ export const DataTableUsers = () => {
 
   const handleShowModel = () => {
     StateModel(!stateModel);
+  };
+  const handleModelExcel = () => {
+    setExcelModel(!ExcelModel);
   };
   const onBtnExport = useCallback(() => {
     gridRef.current.api.exportDataAsCsv();
@@ -152,13 +168,23 @@ export const DataTableUsers = () => {
   }, []);
   return (
     <>
+    <UploadExcel estado={ExcelModel}/>
       <UserRegister estado={stateModel} />
-      <div className="panel_opciones bg-white w-[90%] mx-auto mt-10 mb-1  rounded-md p-4">
+      <div className="panel_opciones bg-white w-[100%] mx-auto mt-10 mb-1  rounded-md p-4">
         <div className="plus_panel flex justify-between items-center">
-        <section className="items-center">
-            Herramientas
+        <section className="items-center flex">
+          
+            <div className="users flex items-center mx-2">
+              <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="#3498DB" d="M16 17v2H2v-2s0-4 7-4s7 4 7 4m-3.5-9.5A3.5 3.5 0 1 0 9 11a3.5 3.5 0 0 0 3.5-3.5m3.44 5.5A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4M15 4a3.39 3.39 0 0 0-1.93.59a5 5 0 0 1 0 5.82A3.39 3.39 0 0 0 15 11a3.5 3.5 0 0 0 0-7Z"/></svg>
+              </span>
+              <span className="text-[#3498DB] mx-1"> Usuarios</span>
+              <span className="text-[#3498DB] mx-1">{getCountDateUsers}</span>
+            </div>
           </section>
-          <section><span>Activos 0 </span> <span>Inactivos 0</span></section>
+          
+
           <section className="flex ">
           <button onClick={onBtnExport} className="flex items-center border mx-1 p-1 rounded-md">
             <span>
@@ -176,7 +202,7 @@ export const DataTableUsers = () => {
             </span>
             <span>Descargar archivo scv</span>
           </button>
-          <button onClick={onBtExportExel} style={{ fontWeight: "bold" }} className="flex items-center border mx-1 p-1 rounded-md">
+          <button onClick={onBtExportExel}  className="flex items-center border mx-1 p-1 rounded-md">
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -192,7 +218,8 @@ export const DataTableUsers = () => {
             </span>
             <span>Exportar a excel</span>
           </button>
-          <button className="flex items-center border mx-1 p-1 rounded-md">
+          <button className="flex items-center border mx-1 p-1 rounded-md"
+          onClick={handleModelExcel}>
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -238,8 +265,10 @@ export const DataTableUsers = () => {
       <div className="buttons">
       
       </div>
-        <div className="panel_second_h w-[90%] mx-auto flex justify-between items-center">
-       <div className="panel_analitic">
+        <div className="panel_second_h w-[100%] mx-auto flex justify-between items-center">
+          
+       <div className="panel_analitic flex">
+        
        <button onClick={onChart1} className="bg-white p-3 hover:shadow-xl my-2 rounded-lg mx-1">
           
           <div className="flex">
@@ -266,8 +295,28 @@ export const DataTableUsers = () => {
           </span>
           </div>
             </button>
+            <div className="content flex ">
+      <div className="inactive flex items-center ">
+      <div className=" bg-white p-2 rounded-lg mx-1">
+      <span className="text-green-500 flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m21.1 12.5l1.4 1.41l-6.53 6.59L12.5 17l1.4-1.41l2.07 2.08l5.13-5.17M10 17l3 3H3v-2c0-2.21 3.58-4 8-4l1.89.11L10 17m1-13a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4Z"/></svg>
+        
+        <span>Activos {getActivosUsers} </span></span>
+      </div>
+      <div className="bg-white p-2 rounded-lg">
+      <span className="text-[red] flex items-center">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path fill="red" d="M10 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H2v-2c0-2.21 3.58-4 8-4m10-2V7h2v6h-2m0 4v-2h2v2h-2Z"/></svg> 
+           <div className="span mx-1">Inactivos {getInactivosUsers}</div></span>
+      </div>
+
+      </div>
+  
+     </div>
        </div>
+     
        <div className="search bg-white flex items-center p-2 rounded-full">
+        
         <div className="icon_search mx-1">
         <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 16 16"><g transform="translate(16 0) scale(-1 1)">
           <path fill="#ABB2B9" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0a5.5 5.5 0 0 1 11 0z"/></g></svg>
@@ -286,20 +335,23 @@ export const DataTableUsers = () => {
       <div
         className="ag-theme-alpine shadow-2xl mx-auto "
         id="myGrid"
-        style={{ height: 600, width: "90%",  }}
+        style={{ height: 600, width: "100%",  }}
       >
         <AgGridReact
           ref={gridRef}
           localeText={AG_GRID_LOCALE_EN}
           columnDefs={columnDefs}
-          rowData={gridApi}
+          rowData={getUsers}
           defaultColDef={defaultColDef}
           animateRows={true}
           rowGroupPanelShow="always"
           pivotPanelShow="always"
           rowDragManaged={true}
           enableRangeSelection={true}
-          sideBar={true}
+          sideBar={
+            true
+            
+          }
           icons={true}
           pagination={true}
           paginationPageSize={10}

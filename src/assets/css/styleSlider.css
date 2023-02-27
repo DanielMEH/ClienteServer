@@ -43,3 +43,25 @@
       transform: rotate(360deg);
     }
   }
+  .load-bar{
+    width: 95%;
+    margin: 0px 10px;
+    border-radius: 50px;
+    height: 20px;
+    background: #fff;
+    overflow: hidden;
+   
+  }
+  .progress{
+    width: 0;
+    height: 100%;
+    display: block;
+    background: #009AFA;
+    transition: width 2s ease-out;
+    
+  }
+
+  .swal-wide{
+    width:500px !important;
+    
+}

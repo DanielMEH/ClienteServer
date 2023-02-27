@@ -2,7 +2,7 @@
 import React, { createContext, useState, useContext } from "react";
 import {
   PostDataUser, postRecoveryEmail, recoverycode, newPassword, PostDataAdmin,
-AuthGoogle,PostDataUserRegister} from "../../apis/ApiData"
+AuthGoogle,PostDataUserRegister,UploadcsvUsuario } from "../../apis/ApiData"
 export const contextUserAdmin = createContext()
 
 export const usePostAuth = () => {
@@ -63,14 +63,8 @@ export const UserContextData = ( { children } ) => {
         return error;
     }
 }
-const getUserRegister = async (postDataUserRegister) => {
-  try {
-      const response = await PostDataUserRegister(postDataUserRegister);
-      return response;
-  } catch (error) {
-      return error;
-  }
-}
+
+
 
   return <contextUserAdmin.Provider value={{
 
@@ -82,7 +76,7 @@ const getUserRegister = async (postDataUserRegister) => {
     verifyCodeUser,
     newPasswordL,
     getPostLoginAuthGoogle,
-    getUserRegister
+   
 
 
   }}  >
