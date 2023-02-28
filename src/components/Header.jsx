@@ -167,8 +167,8 @@ export const Header = () => {
                   </NavLink>
                 </li>
                 <li className="relative lik mx-2 p-1 text-[1.1rem] text-cyan-900 todoFont">
-                  <NavLink to="/ayuda" className="nav-item font-bold  inline-block relative ">
-                    Ayuda
+                  <NavLink to="/somos" className="nav-item font-bold  inline-block relative ">
+                   Quiénes somos
                   </NavLink>
                 </li>
                 <li className="relative lik mx-2 p-1 text-[1.1rem] font-bold  text-cyan-900 todoFont">

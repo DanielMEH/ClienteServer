@@ -119,7 +119,7 @@ export const DataTableUsers = () => {
       cellRange: {
         rowStartIndex: 0,
         rowEndIndex: 4,
-        columns: ['idAccount', 'correo','name',],
+        columns: ['idAccount', 'correo','estado',],
       },
       chartType: 'groupedColumn',
       chartThemeName: 'ag-vivid',

@@ -1,0 +1,77 @@
+
+
+:root{
+
+   --fontz-size: 3.3rem;
+}
+
+.mockup-grid{
+
+   display: grid;
+   grid-template-columns: 36rem auto;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+   font-family: 'Roboto', sans-serif;
+}
+.figure{
+
+   width: 50rem;
+}
+.article .tittle{
+   font-size: var(--fontz-size);
+   line-height: 1;
+   max-width: 33rem;
+   font-weight: bold;
+   letter-spacing: 0.004em;
+   background: linear-gradient(#1aa7f8,#072a3e);
+   color: transparent;
+   text-shadow: 0px 2px 10px 9px #1a1b4a;
+   background-clip: text;
+   -webkit-background-clip: text;
+
+
+
+}
+.content-k {
+   display: grid;
+   grid-template-columns: 38rem auto;
+
+}
+.content-ks{
+   display: grid;
+   grid-template-columns: 60rem auto;
+}
+.content-k{
+
+   position: relative;
+}
+.mk-kodiar::before{
+
+   content: "";
+   height: 700px;
+   width: 3px;
+   background: #1aa7f8;
+   position: absolute;
+   top: 1.2rem;
+   left: -2rem;
+
+}
+.mk-kodiar::after{
+
+   content: "";
+   height: 20px;
+   width: 20px;
+   background: #1aa7f8;
+   position: absolute;
+   top: 1.31rem;
+   left: -2.51rem;
+   transform: rotate(45deg);
+   box-shadow: 170px 170px #1aa7f8,  293px 293px #1aa7f8, 385px 385px #1aa7f8;
+
+}
+.wave {
+
+   margin-top: -7rem;
+}
+

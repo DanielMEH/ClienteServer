@@ -22,6 +22,8 @@ import { Perfil } from "../layout/Perfil";
 import { Shope } from "../layout/Shope";
 import { Prueba } from "../layout/Prueba";
 import { GetUsersContext } from "../hooks/context/GetUsersContext";
+import { Somos } from "../pages/Somos";
+import { Contactanos } from "../pages/Contactanos";
 export const Router = () => {
   const token = localStorage.getItem("secure_token");
   const perfil_rol = localStorage.getItem("perfil_rol");
@@ -71,7 +73,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin", "inventario")
                 }
               >
                 <Inventory />
@@ -83,7 +85,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin", "categoria")
                 }
               >
                 <Category />
@@ -123,7 +125,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin", "notificaciones")
                 }
               >
                 <Notification />
@@ -135,7 +137,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin", "productos")
                 }
               >
                 <Product />
@@ -147,7 +149,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin", "categorias")
                 }
               >
                 <Category />
@@ -159,7 +161,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin", "proveedores")
                 }
               >
                 <Provider />
@@ -171,7 +173,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin", "estadisticas")
                 }
               >
                 <Analitycs />
@@ -183,7 +185,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin", "Perfil")
                 }
               >
                 <Perfil/>
@@ -195,7 +197,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin", "compras")
                 }
               >
                 <Shope />
@@ -207,13 +209,15 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin", "Planificadora")
                 }
               >
                 <Shope />
               </ProtectedRouter>
             }
           />
+          <Route path="/somos" element={<Somos />}/>
+          <Route path="/contactanos" element={<Contactanos />}/>
           
 
       
