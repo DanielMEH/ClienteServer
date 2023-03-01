@@ -27,13 +27,32 @@ import { Contactanos } from "../pages/Contactanos";
 export const Router = () => {
   const token = localStorage.getItem("secure_token");
   const perfil_rol = localStorage.getItem("perfil_rol");
-  let tokeVerify = token ? token : null;
-  let permision = perfil_rol ? perfil_rol : null;
+  const module = localStorage.getItem("module")
+  let type = localStorage.getItem("type")
+  
+  
   let usersData = {
-    tokeVerify,
-    permisions: [permision],
+    tokeVerify:"",
+    permisions: [],
   };
+  if(type === "user"){
+    
+    const obj = module.titulo
+    let toke = token ? token : null;
+    let permision = "module" ? obj : null;
+    usersData.tokeVerify = toke
+    usersData.permisions = permision
+  }else{
+    let tokeVerify = token ? token : null;
+    let permision = perfil_rol ? perfil_rol : null;
+
+    usersData.permisions.push(perfil_rol)
+    usersData.tokeVerify = tokeVerify
+    
+  }
   const [users, setUsers] = useState(usersData);
+  console.log(users);
+
   return (
     <>
       <UserContextData>

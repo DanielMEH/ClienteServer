@@ -96,32 +96,85 @@ export const AuthUser = () => {
                 })}
                 onSubmit={async (values) => {
                   let response = await getPostLogin(values);
-                  if (response.status === 200) {
-                    toast.success("Cargando...", {
-                      position: toast.POSITION.TOP_RIGHT,
-                      theme: "dark",
-                    });
-                    let getData = response.data;
-                    localStorage.setItem("secure_token", getData.token);
-                    localStorage.setItem("auth_cuenta", getData.auth);
-                    localStorage.setItem("response_auth", getData.message);
-                    localStorage.setItem("perfil_rol", getData.rol);
-                    setSpiner(true);
-                    window.location.href = "/dasboard";
-                  }
-                  if (response.response.status === 400) {
-                    setSpiner(true)
-                    toast.error("Este usuario no existe", {
-                      position: toast.POSITION.TOP_RIGHT,
-                      theme: "dark",
-                    });
+                  
+                  if(response.data.type = "user"){
+                    let arrayLocalStorageModul = response.data.module
+                  
+
+                    if (response.status === 200) {
+                      toast.success("Cargando...", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                      });
+                      let arrayModule = []
+                      console.log(arrayLocalStorageModul[0].titulo);
+                      for (let i = 0; i < arrayLocalStorageModul.length; i++) {
+                        arrayModule.push(arrayLocalStorageModul[i].titulo)
+                      }
+
                      
-                  } else if (response.response.status === 401) {
-                    toast.warning("La contraseña es incorrecta", {
-                      position: toast.POSITION.TOP_RIGHT,
-                      theme: "dark",
-                    });
-                     setSpiner(true);
+                      let getData = response.data;
+                      localStorage.setItem("secure_token", getData.token);
+                      localStorage.setItem("auth_cuenta", getData.auth);
+                      localStorage.setItem("response_auth", getData.message);
+                      localStorage.setItem("module", JSON.stringify(arrayModule));
+                      localStorage.setItem("type", response.data.type);
+                     
+                     // arraylis de localstorage
+                      let modul = localStorage.getItem("module");
+                      
+                      
+                     
+                     console.log(modul);
+                      setSpiner(true);
+                      // window.location.href = "/dasboard";
+                    }
+
+                    if (response.response.status === 400) {
+                      setSpiner(true)
+                      toast.error("Este usuario no existe", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                      });
+                       
+                    } else if (response.response.status === 401) {
+                      toast.warning("La contraseña es incorrecta", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                      });
+                       setSpiner(true);
+                    }
+                  }else{
+
+                    if (response.status === 200) {
+                      toast.success("Cargando...", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                      });
+                      let getData = response.data;
+                      localStorage.setItem("secure_token", getData.token);
+                      localStorage.setItem("auth_cuenta", getData.auth);
+                      localStorage.setItem("response_auth", getData.message);
+                      localStorage.setItem("perfil_rol", getData.rol);
+                      setSpiner(true);
+                      // window.location.href = "/dasboard";
+                    }
+
+                    if (response.response.status === 400) {
+                      setSpiner(true)
+                      toast.error("Este usuario no existe", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                      });
+                       
+                    } else if (response.response.status === 401) {
+                      toast.warning("La contraseña es incorrecta", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                      });
+                       setSpiner(true);
+                    }
+                    
                   }
                 }}
               >
