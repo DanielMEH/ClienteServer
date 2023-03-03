@@ -51,8 +51,9 @@ export const DataTableUsers = () => {
       rowDrag: true,
       checkboxSelection: checkboxSelection,
       headerCheckboxSelection: headerCheckboxSelection,
-      chartDataType: 'name',
+     
       filter: "agTextColumnFilter",
+      chartDataType: 'correo'
     },
     {
       headerName: "Contraseña",
@@ -117,9 +118,9 @@ export const DataTableUsers = () => {
   const onChart1 = useCallback(() => {
     var params = {
       cellRange: {
-        rowStartIndex: 0,
-        rowEndIndex: 4,
-        columns: ['idAccount', 'correo','name',],
+        rowStartIndex: 1,
+        rowEndIndex: 6,
+        columns: [ 'correo', "fecha", "hora"],
       },
       chartType: 'groupedColumn',
       chartThemeName: 'ag-vivid',
