@@ -9,6 +9,7 @@
 
 
 .lik::after{
+    
     content: "";
     height: 2px;
     position: absolute;

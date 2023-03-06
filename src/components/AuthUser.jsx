@@ -17,12 +17,14 @@ import jwt_decode from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import * as Yup from "yup";
 import "animate.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { usePostAuth } from "../hooks/context/UserContextData";
 import "../assets/css/spiner.css";
 import { Navigate } from "react-router-dom";
 import { Header } from "../components/Header";
 export const AuthUser = () => {
+
+  const navegate = useNavigate()
   const token = localStorage.getItem("secure_token");
   const [typeInput, setTypeInput] = useState(true);
   const [spiner, setSpiner] = useState(true);
@@ -47,6 +49,7 @@ export const AuthUser = () => {
     localStorage.setItem("auth_cuenta", getData.auth);
     localStorage.setItem("response_auth", getData.message);
     localStorage.setItem("perfil_rol", getData.rol);
+    localStorage.setItem("type", getData.rol);
     setSpiner(!spiner);
     
     window.location.href = "/dasboard";
@@ -96,32 +99,85 @@ export const AuthUser = () => {
                 })}
                 onSubmit={async (values) => {
                   let response = await getPostLogin(values);
-                  if (response.status === 200) {
-                    toast.success("Cargando...", {
-                      position: toast.POSITION.TOP_RIGHT,
-                      theme: "dark",
-                    });
-                    let getData = response.data;
-                    localStorage.setItem("secure_token", getData.token);
-                    localStorage.setItem("auth_cuenta", getData.auth);
-                    localStorage.setItem("response_auth", getData.message);
-                    localStorage.setItem("perfil_rol", getData.rol);
-                    setSpiner(true);
-                    window.location.href = "/dasboard";
-                  }
-                  if (response.response.status === 400) {
-                    setSpiner(true)
-                    toast.error("Este usuario no existe", {
-                      position: toast.POSITION.TOP_RIGHT,
-                      theme: "dark",
-                    });
+                  
+                  if(response.data.type === "user"){
+                    let arrayLocalStorageModul = response.data.module
+                  
+
+                    if (response.status === 200) {
+                      toast.success("Cargando...", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                        timeOut: 1000,
+                      });
+                      let arrayModule = ""
+                      console.log(arrayLocalStorageModul[0].titulo);
+                      for (let i = 0; i < arrayLocalStorageModul.length; i++) {
+                        arrayModule=arrayLocalStorageModul[i].titulo
+                      }
+                      let getData = response.data;
+                      console.log(getData);
+                      localStorage.setItem("secure_token", getData.token);
+                      localStorage.setItem("auth_cuenta", getData.auth);
+                      localStorage.setItem("response_auth", getData.message);
+                      localStorage.setItem("module", arrayModule);
+                 
+                      localStorage.setItem("type", response.data.type);
+                      if(response.data.type === "user"){
+                        window.location.href = "/inventario";
+
+                      }
                      
-                  } else if (response.response.status === 401) {
-                    toast.warning("La contraseña es incorrecta", {
-                      position: toast.POSITION.TOP_RIGHT,
-                      theme: "dark",
-                    });
-                     setSpiner(true);
+                    }
+
+                    if (response.response.status === 400) {
+                      setSpiner(true)
+                      toast.error("Este usuario no existe", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                      });
+                       
+                    } else if (response.response.status === 401) {
+                      toast.warning("La contraseña es incorrecta", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                      });
+                       setSpiner(true);
+                    }
+                  }else{
+
+                    if (response.status === 200) {
+                      alert(JSON.stringify(response.data))
+                      toast.success("Cargando...", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                      });
+                      let typeAdmin = "superAdmin";
+                      let getData = response.data;
+                      localStorage.setItem("type", typeAdmin);
+                      localStorage.setItem("secure_token", getData.token);
+                      localStorage.setItem("auth_cuenta", getData.auth);
+                      localStorage.setItem("response_auth", getData.message);
+                      localStorage.setItem("perfil_rol", getData.rol);
+                      setSpiner(true);
+                      navegate("/dasboard")
+                    }
+
+                    if (response.response.status === 400) {
+                      setSpiner(true)
+                      toast.error("Este usuario no existe", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                      });
+                       
+                    } else if (response.response.status === 401) {
+                      toast.warning("La contraseña es incorrecta", {
+                        position: toast.POSITION.TOP_RIGHT,
+                        theme: "dark",
+                      });
+                       setSpiner(true);
+                    }
+                    
                   }
                 }}
               >

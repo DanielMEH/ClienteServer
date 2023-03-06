@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AuthUser } from "../components/AuthUser";
 import { Signup } from "../components/Signup";
@@ -22,16 +22,58 @@ import { Perfil } from "../layout/Perfil";
 import { Shope } from "../layout/Shope";
 import { Prueba } from "../layout/Prueba";
 import { GetUsersContext } from "../hooks/context/GetUsersContext";
+import { Somos } from "../pages/Somos";
+import { Contactanos } from "../pages/Contactanos";
+import { ModalModule } from "../components/ModalModule";
+import axios from "axios";
+import { PlanificCalendar } from "../layout/PlanificCalendar";
+
 export const Router = () => {
+
+  const [usersP, setUsersP] = useState([]);
   const token = localStorage.getItem("secure_token");
-  const perfil_rol = localStorage.getItem("perfil_rol");
-  let tokeVerify = token ? token : null;
-  let permision = perfil_rol ? perfil_rol : null;
+  let type = localStorage.getItem("type")
   let usersData = {
-    tokeVerify,
-    permisions: [permision],
+    tokeVerify:"",
+    permisions: [],
   };
-  const [users, setUsers] = useState(usersData);
+
+  useEffect(() => {
+    
+    async  function getModulesUser(){
+      const response = await axios.get(`http://localhost:3002/getMod/${token}`)
+     
+      const modules = response.data.data
+      modules.map((item)=>{
+       return setUsersP([...usersP,usersP.push(item.titulo)])
+      })
+    }
+    getModulesUser()
+  }, [])
+
+
+
+
+  if(type === "user"){
+    const modules= localStorage.getItem("module") 
+    const obj = modules
+    let toke = token ? token : null;
+    usersData.tokeVerify = toke
+    usersData.permisions = ["inventario"]
+    usersData.permisions = usersP
+  
+  }
+
+  if(type === "superAdmin"){
+    let tokeVerify = token ? token : null;
+    usersData.permisions= [
+      "superAdmin", "inventario", "categoria", "usuario", "notificacion", "producto",
+       "proveedor", "compras", "analityc", "perfil", "dasboard","shope"]
+    usersData.tokeVerify = tokeVerify
+  }
+
+  const [users, setUsers] = useState(usersData)
+
   return (
     <>
       <UserContextData>
@@ -53,25 +95,12 @@ export const Router = () => {
           <Route path="/signup" element={<Signup />} />
           
           <Route index element={<HomePage />} />
-          
-          <Route
-            element={
-              <ProtectedRouter
-                isAllowed={
-                  !!users.tokeVerify && users.permisions.includes("superAdmin")
-                }
-                redirectTo="/inventario"
-              />
-            }
-          >
-            
-          </Route>
           <Route
             path="/inventario"
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("inventario")
                 }
               >
                 <Inventory />
@@ -79,18 +108,27 @@ export const Router = () => {
             }
           />
           <Route
-            path="/Category"
+            path="/categorias"
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("categoria")
                 }
+                redirectTo="/inventario"
               >
                 <Category />
               </ProtectedRouter>
             }
           />
-          <Route path="/dasboard" element={<Admin />} >
+          <Route path="/dasboard"  element={
+              <ProtectedRouter
+                isAllowed={
+                  !!users && users.permisions.includes("dasboard")
+                }
+              >
+                <Admin />
+              </ProtectedRouter>
+            } >
 
               
             </Route>
@@ -99,7 +137,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("usuario")
                 }
               >
                 <Usuarios />
@@ -111,10 +149,22 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("notificacion")
                 }
               >
                 <Notification />
+              </ProtectedRouter>
+            }
+          />
+              <Route
+            path="/permisions/:id"
+            element={
+              <ProtectedRouter
+                isAllowed={
+                  !!users && users.permisions.includes("superAdmin")
+                }
+              >
+                <ModalModule/>
               </ProtectedRouter>
             }
           />
@@ -123,7 +173,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("notificacion")
                 }
               >
                 <Notification />
@@ -135,7 +185,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("producto")
                 }
               >
                 <Product />
@@ -147,7 +197,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("categorias")
                 }
               >
                 <Category />
@@ -159,7 +209,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("proveedor")
                 }
               >
                 <Provider />
@@ -171,7 +221,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("analityc")
                 }
               >
                 <Analitycs />
@@ -183,7 +233,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin")
                 }
               >
                 <Perfil/>
@@ -195,7 +245,7 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("compras")
                 }
               >
                 <Shope />
@@ -207,13 +257,15 @@ export const Router = () => {
             element={
               <ProtectedRouter
                 isAllowed={
-                  !!users && users.permisions.includes("superAdmin", "usuario")
+                  !!users && users.permisions.includes("superAdmin")
                 }
               >
-                <Shope />
+                <PlanificCalendar />
               </ProtectedRouter>
             }
           />
+          <Route path="/somos" element={<Somos />}/>
+          <Route path="/contactanos" element={<Contactanos />}/>
           
 
       

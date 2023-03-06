@@ -90,6 +90,7 @@ export const DataTableUsers = () => {
       headerName: "Opciones",
       field: "Settings",
       cellRenderer: OpcionTabledCrud,
+      
     },
   ]);
  
@@ -118,9 +119,9 @@ export const DataTableUsers = () => {
   const onChart1 = useCallback(() => {
     var params = {
       cellRange: {
-        rowStartIndex: 1,
-        rowEndIndex: 6,
-        columns: [ 'correo', "fecha", "hora"],
+        rowStartIndex: 0,
+        rowEndIndex: 4,
+        columns: ['idAccount', 'correo','estado',],
       },
       chartType: 'groupedColumn',
       chartThemeName: 'ag-vivid',

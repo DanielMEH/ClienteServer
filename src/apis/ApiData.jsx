@@ -7,6 +7,7 @@ export const recoverycode = async (data) => await axios.post(`${urlServer}/recov
 export const newPassword = async (data) => await axios.post(`${urlServer}/newPass`, { data})
 export const AuthGoogle = async data => await axios.post(`${urlServer}/authgoogleAccount`, { data})
 export const PostDataAdmin = async (postDataAdmin) => await axios.post(`${urlServer}/register`, { postDataAdmin})
+export const  getDataAdmin = async (tokenData) => await axios.post(`${urlServer}/getsataAdminr/${tokenData}`)
 export const tokenData = async (tokenData,token) => await axios.post(`${urlServer}/register`, {tokenData},{
     headers: {
         "acc-token-data":token
@@ -33,3 +34,23 @@ export const DeleteuserPost = async (deleteData) => await axios.post(`${urlServe
         "isallowed-x-token":accessToken
     }
     })
+
+
+export const setModule = async (data) => await axios.post(`${urlServer}/setModule`, {data},{
+    headers: {
+        "isallowed-x-token":accessToken
+    }
+
+})
+export const GetModule = async (id) => await axios.get(`${urlServer}/getModuleUsers/${id}`,{
+    headers: {
+        "isallowed-x-token":accessToken
+    }
+
+})
+export const DeleteModule = async (id) => await axios.post(`${urlServer}/deleteModuleUser`,{id},{
+    headers: {
+        "isallowed-x-token":accessToken
+    }
+
+})

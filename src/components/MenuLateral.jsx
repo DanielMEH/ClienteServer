@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import "../assets/css/fuente.css";
 import user from "../assets/icons/user-check.svg";
@@ -17,16 +17,65 @@ import harddrive from "../assets/icons/hard-drive.svg";
 import truck from "../assets/icons/truck.svg";
 import cloceSession from "../assets/icons/log-out.svg";
 import compras from "../assets/icons/shopping-cart.svg"
-
+import axios from "axios";
 export const MenuLateral = () => {
   const hundleClick = () => {
     localStorage.removeItem("secure_token");
     localStorage.removeItem("perfil_rol");
     localStorage.removeItem("auth_cuenta");
     localStorage.removeItem("response_auth");
+    localStorage.removeItem("type");
+    localStorage.removeItem("module");
     window.location.href = "/login";
   };
   const fecha = new Date().getFullYear();
+
+  // new
+  const [usersP, setUsersP] = useState([]);
+  const token = localStorage.getItem("secure_token");
+  let type = localStorage.getItem("type")
+  let usersData = {
+    tokeVerify:"",
+    permisions: [],
+  };
+
+  useEffect(() => {
+    
+    async  function getModulesUser(){
+      const response = await axios.get(`http://localhost:3002/getMod/${token}`)
+     
+      const modules = response.data.data
+      modules.map((item)=>{
+       return setUsersP([...usersP,usersP.push(item.titulo)])
+      })
+    }
+    getModulesUser()
+  }, [])
+
+
+
+
+  if(type === "user"){
+    const modules= localStorage.getItem("module") 
+    const obj = modules
+    let toke = token ? token : null;
+    usersData.tokeVerify = toke
+    usersData.permisions = ["inventario"]
+    usersData.permisions = usersP
+
+  }
+
+  if(type === "superAdmin"){
+    let tokeVerify = token ? token : null;
+    usersData.permisions= [
+      "superAdmin", "inventario", "categoria", "usuario", "notificacion", "producto",
+       "proveedor", "compras","inicio", "analityc", "perfil", "dasboard","shope","config","ayuda","report",
+      "start"]
+    usersData.tokeVerify = tokeVerify
+  }
+
+  const [users, setUsers] = useState(usersData)
+
 
   return (
     <div className="
@@ -35,7 +84,7 @@ export const MenuLateral = () => {
     sticky top-0
    
     h-screen  w-64  b shadow-2xl shadow-teal-300/10 z-10  ">
-      <div className="contenedor__mL h-full  flex flex-col gap-1  justify-between">
+      <div className="contenedor__mL h-screen  flex flex-col gap-1  justify-between">
         <div className="section-1">
           <h2 className="text-center sticky top-0 bg-white z-20 block text-xl font-bold py-2 border-b text-neutral-800">
             Identificate
@@ -56,7 +105,8 @@ export const MenuLateral = () => {
           </div>
           <div className="items_list_roles">
             <ul className="p-0 m-0">
-              <li>
+              {users.permisions.includes("inicio") ? (
+                <li>
                 <NavLink
                   to={"/dasboard"}
                   className={({ isActive }) =>
@@ -80,7 +130,9 @@ export const MenuLateral = () => {
                   </div>
                 </NavLink>
               </li>
-              <li className="p-0 m-0">
+              ):null}
+              {users.permisions.includes("perfil") ? (
+                <li className="p-0 m-0">
                 <NavLink
                   to={"/perfil"}
                   className={({ isActive }) =>
@@ -102,7 +154,9 @@ export const MenuLateral = () => {
                   <div className="NavLinks1 pt-[2px] ml-3">Perfil</div>
                 </NavLink>
               </li>
-              <li>
+              ):null}
+              {users.permisions.includes("usuario") ? (
+                <li>
                 <NavLink
                   to={"/usuarios"}
                   className={({ isActive }) =>
@@ -120,37 +174,43 @@ export const MenuLateral = () => {
                           rounded `
                   }
                 >
-                  <img src={users} alt="" width={20} />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="none" stroke="#787878" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19.128a9.38 9.38 0 0 0 2.625.372a9.337 9.337 0 0 0 4.121-.952a4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0a3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0a2.625 2.625 0 0 1 5.25 0Z"/>
+                  </svg>
                   <div className="NavLinks7 pt-[2px] ml-3 whitespace-nowrap">
                     Usuarios
                   </div>
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to={"/notificaciones"}
-                  className={({ isActive }) =>
-                    isActive
-                      ? `
-                        flex 
-                        bg-gray-100
-                        items-center 
-                         mx-1  my-[2px] p-2 font-medium text-black
-                         rounded `
-                      : `flex 
-                         hover:bg-gray-100
+              ):null}
+              {users.permisions.includes("notificacion") ? (
+                 <li>
+                 <NavLink
+                   to={"/notificaciones"}
+                   className={({ isActive }) =>
+                     isActive
+                       ? `
+                         flex 
+                         bg-gray-100
                          items-center 
-                          mx-1 my-[2px] p-2 font-medium text-black
+                          mx-1  my-[2px] p-2 font-medium text-black
                           rounded `
-                  }
-                >
-                  <img src={bell} alt="" width={20} />
-                  <div className="NavLinks7 pt-[2px] ml-3 whitespace-nowrap ">
-                    Notificaciones
-                  </div>
-                </NavLink>
-              </li>
-              <li>
+                       : `flex 
+                          hover:bg-gray-100
+                          items-center 
+                           mx-1 my-[2px] p-2 font-medium text-black
+                           rounded `
+                   }
+                 >
+                   <img src={bell} alt="" width={20} />
+                   <div className="NavLinks7 pt-[2px] ml-3 whitespace-nowrap ">
+                     Notificaciones
+                   </div>
+                 </NavLink>
+               </li>
+              ):null}
+              {users.permisions.includes("inventario") ?(
+                <li>
                 <NavLink
                   to={"/inventario"}
                   className={({ isActive }) =>
@@ -174,7 +234,9 @@ export const MenuLateral = () => {
                   </div>
                 </NavLink>
               </li>
-              <li>
+              ):null} 
+              {users.permisions.includes("producto") ? (
+                <li>
                 <NavLink
                   to={"/productos"}
                   className={({ isActive }) =>
@@ -198,7 +260,9 @@ export const MenuLateral = () => {
                   </div>
                 </NavLink>
               </li>
-              <li>
+              ):null}
+              {users.permisions.includes("categoria") ? (
+                <li>
                 <NavLink
                   to={"/categorias"}
                   className={({ isActive }) =>
@@ -222,7 +286,9 @@ export const MenuLateral = () => {
                   </div>
                 </NavLink>
               </li>
-              <li>
+              ):null}
+              {users.permisions.includes("proveedor") ? (
+                <li>
                 <NavLink
                   to={"/proveedores"}
                   className={({ isActive }) =>
@@ -246,31 +312,9 @@ export const MenuLateral = () => {
                   </div>
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to={"/estadisticas"}
-                  className={({ isActive }) =>
-                    isActive
-                      ? `
-                        flex 
-                        bg-gray-100
-                        items-center 
-                         mx-1  my-[2px] p-2 font-medium text-black
-                         rounded `
-                      : `flex 
-                         hover:bg-gray-100
-                         items-center 
-                          mx-1 my-[2px] p-2 font-medium text-black
-                          rounded `
-                  }
-                >
-                  <img src={chart} alt="" width={20} />
-                  <div className="NavLinks6 pt-[2px] ml-3 whitespace-nowrap">
-                    Estadisticas
-                  </div>
-                </NavLink>
-              </li>
-              <li>
+              ):null}
+              {users.permisions.includes("planificadora") ? (
+                <li>
                 <NavLink
                   to={"/planificadora"}
                   className={({ isActive }) =>
@@ -294,7 +338,9 @@ export const MenuLateral = () => {
                   </div>
                 </NavLink>
               </li>
-              <li>
+              ):null}
+              {users.permisions.includes("compras") ? (
+                <li>
                 <NavLink to={"/compras"}
                   
                   className={({ isActive }) =>
@@ -318,6 +364,7 @@ export const MenuLateral = () => {
                   </div>
                 </NavLink>
               </li>
+              ):null}
               <li>
                 <NavLink to="/login"
                   
@@ -350,37 +397,49 @@ export const MenuLateral = () => {
             </ul>
           </div>
         </div>
+        {users.permisions.includes("config") ? (
+          <div className="titkle">
+         
+          <h2 className="ml-4 font-bold mt-12 mb-4  text-2xl whitespace-nowrap  "
+          >configuración</h2>
+          <hr />
+          
+        </div>
+        ):null}
         <div className="section-2">
           <div className="items-2">
             <ul>
               <li className="mt-30">
                 
               </li>
-              <li>
-                <NavLink
-                  to={"/settings"}
-                  className={({ isActive }) =>
-                    isActive
-                      ? `
-                        flex 
-                        bg-gray-100
+           {users.permisions.includes("config") ? (
+               <li>
+               <NavLink
+                 to={"/settings"}
+                 className={({ isActive }) =>
+                   isActive
+                     ? `
+                       flex 
+                       bg-gray-100
+                       items-center 
+                        mx-1  my-[2px] p-2 font-medium text-black
+                        rounded `
+                     : `flex 
+                        hover:bg-gray-100
                         items-center 
-                         mx-1  my-[2px] p-2 font-medium text-black
+                         mx-1 my-[2px] p-2 font-medium text-black
                          rounded `
-                      : `flex 
-                         hover:bg-gray-100
-                         items-center 
-                          mx-1 my-[2px] p-2 font-medium text-black
-                          rounded `
-                  }
-                >
-                  <img src={settings} alt="" width={20} />
-                  <div className="pt-[2px] ml-3 whitespace-nowrap">
-                    Configuración
-                  </div>
-                </NavLink>
-              </li>
-              <li>
+                 }
+               >
+                 <img src={settings} alt="" width={20} />
+                 <div className="pt-[2px] ml-3 whitespace-nowrap">
+                   Configuración
+                 </div>
+               </NavLink>
+             </li>
+           ):null}
+              {users.permisions.includes("ayuda") ? (
+                <li>
                 <NavLink
                   to={"/ayudaAdmin"}
                   className={({ isActive }) =>
@@ -402,7 +461,9 @@ export const MenuLateral = () => {
                   <div className="pt-[2px] ml-3 whitespace-nowrap">Ayuda</div>
                 </NavLink>
               </li>
-              <li>
+              ):null}
+              {users.permisions.includes("report") ? (
+                <li>
                 <NavLink
                   to={"/reportes"}
                   className={({ isActive }) =>
@@ -426,7 +487,9 @@ export const MenuLateral = () => {
                   </div>
                 </NavLink>
               </li>
-              <li>
+              ):null}
+              {users.permisions.includes("start") ? (
+                <li>
                 <NavLink
                   to={"/startAdmin"}
                   className={({ isActive }) =>
@@ -450,6 +513,7 @@ export const MenuLateral = () => {
                   </div>
                 </NavLink>
               </li>
+              ):null}
               <div className="mx-2 p-2 text-gray-400 text-sm ">&copy; {fecha} | stored</div>
             </ul>
           </div>
