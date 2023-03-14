@@ -41,7 +41,7 @@ export const UserRegister = ({estado=false }) => {
   
   return (
     <div className={
-      estados ? "backdrop-blur-sm bg-white/50   h-full absolute z-30 w-4/5" : "hidden" 
+      estados ? "  h-full absolute z-30 w-4/5" : "hidden" 
     }>
       <ToastContainer />
       

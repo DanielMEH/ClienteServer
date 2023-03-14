@@ -1,26 +1,14 @@
-import React,{useEffect} from 'react'
-import  {useGetUsers} from "../hooks/context/GetUsersContext"
+import React from 'react'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
-export const Prueba =  () => {
-
-    const {getUsersAdmins,getUsers} =useGetUsers()
-   useEffect(() => {
-    getUsersAdmins()
-   },[])
-    
-  
+export const Prueba = () => {
+	
   return (
-    <div>
-
-        {getUsers.map((user)=>(
-            <div key={user.idAccount}>
-                <span>
-
-                    {user.correo}
-                </span>
-
-            </div>
-        ))}
-    </div>
+	<>
+	
+	<Skeleton />
+    
+	</>
   )
 }

@@ -7,7 +7,8 @@ import React, {
 import moment from 'moment-with-locales-es6';
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-enterprise";
 import plus from "../assets/icons/plus.svg";
@@ -29,11 +30,16 @@ export const DataTableUsers = () => {
   const {getUsersAdmins,getUsers,getCountData,getCountDateUsers,
     getActivosUsers,
     getInactivosUsers } = useGetUsers()
-  console.log();
+    const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    getUsersAdmins()
-    getCountData()
+    const initial = async () => {
+     await  getUsersAdmins()
+     await  getCountData()
+      setLoading(false)
+    }
+
+    initial()
 
   },[])
  
@@ -185,7 +191,7 @@ export const DataTableUsers = () => {
               <span className="text-[#3498DB] mx-1">{getCountDateUsers}</span>
             </div>
           </section>
-          
+        
 
           <section className="flex ">
           <button onClick={onBtnExport} className="flex items-center border mx-1 p-1 rounded-md">

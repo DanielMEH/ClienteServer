@@ -28,7 +28,6 @@ export const AuthUser = () => {
   const token = localStorage.getItem("secure_token");
   const [typeInput, setTypeInput] = useState(true);
   const [spiner, setSpiner] = useState(true);
-  console.log(spiner);
   const { getPostLogin, getPostLoginAuthGoogle } = usePostAuth();
   if (token) {
     return <Navigate to="/dasboard" />;
@@ -43,7 +42,7 @@ export const AuthUser = () => {
     };
 
     const response = await getPostLoginAuthGoogle(dataGoogle);
-    console.log(response);
+    
     let getData = response.data;
     localStorage.setItem("secure_token", getData.token);
     localStorage.setItem("auth_cuenta", getData.auth);
@@ -52,7 +51,7 @@ export const AuthUser = () => {
     localStorage.setItem("type", getData.rol);
     setSpiner(!spiner);
     
-    window.location.href = "/dasboard";
+    window.location.href = "/perfil";
   };
   return (
     <>
@@ -99,10 +98,10 @@ export const AuthUser = () => {
                 })}
                 onSubmit={async (values) => {
                   let response = await getPostLogin(values);
+                  console.log(response);
                   
                   if(response.data.type === "user"){
                     let arrayLocalStorageModul = response.data.module
-                  
 
                     if (response.status === 200) {
                       toast.success("Cargando...", {
@@ -116,7 +115,7 @@ export const AuthUser = () => {
                         arrayModule=arrayLocalStorageModul[i].titulo
                       }
                       let getData = response.data;
-                      console.log(getData);
+                    
                       localStorage.setItem("secure_token", getData.token);
                       localStorage.setItem("auth_cuenta", getData.auth);
                       localStorage.setItem("response_auth", getData.message);
@@ -129,7 +128,7 @@ export const AuthUser = () => {
                       }
                      
                     }
-
+                    
                     if (response.response.status === 400) {
                       setSpiner(true)
                       toast.error("Este usuario no existe", {
@@ -144,25 +143,27 @@ export const AuthUser = () => {
                       });
                        setSpiner(true);
                     }
-                  }else{
+                  }
+                  console.log("es administrador");
 
                     if (response.status === 200) {
-                      alert(JSON.stringify(response.data))
+                     
                       toast.success("Cargando...", {
                         position: toast.POSITION.TOP_RIGHT,
                         theme: "dark",
                       });
-                      let typeAdmin = "superAdmin";
+                      
                       let getData = response.data;
-                      localStorage.setItem("type", typeAdmin);
                       localStorage.setItem("secure_token", getData.token);
                       localStorage.setItem("auth_cuenta", getData.auth);
                       localStorage.setItem("response_auth", getData.message);
                       localStorage.setItem("perfil_rol", getData.rol);
-                      setSpiner(true);
-                      navegate("/dasboard")
-                    }
+                      localStorage.setItem("type", getData.rol);
 
+                      setSpiner(true);
+                      window.location.href = "/perfil";
+                    }
+                    console.log(response.response.status);
                     if (response.response.status === 400) {
                       setSpiner(true)
                       toast.error("Este usuario no existe", {
@@ -178,7 +179,7 @@ export const AuthUser = () => {
                        setSpiner(true);
                     }
                     
-                  }
+                  
                 }}
               >
                 <Form>

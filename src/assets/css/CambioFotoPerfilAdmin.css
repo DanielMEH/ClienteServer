@@ -1,0 +1,91 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    }
+    
+    .container_v{
+        scroll-behavior: smooth;
+    
+        width: 50%;
+        height: 70%;
+        position: fixed;
+        z-index: 2000;
+        inset: 0;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #ffffff;
+        flex-direction: column;
+        
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+    }
+    .drag-area{
+    
+        border: 5px dashed #ccc;
+        height: 200px;
+        width: 500px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    
+    }
+    .drag-area.active{
+        border-color: #b8d4fe;
+        color: white;
+        border: 2px dashed #618ac9;
+    }
+    .drag-area h2{
+        font-size: 30px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 1rem;
+    
+    }
+    .drag-area span{
+        font-size: 25px;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 1rem;
+        text-align: center;
+        display: block;
+    }
+    .drag-area button{
+        padding: 10px 25px;
+        background: #5994f5;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    #preview{
+        margin-top: 10px;
+    }
+    .status-text{
+        padding: 0 10px;
+    }
+    .success{
+        color: rgb(22, 207, 102);
+    }
+    .failure{
+        color: red;
+    }
+    .file-container{
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10px;
+        padding: 10px;
+       
+    }

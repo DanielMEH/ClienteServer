@@ -1,6 +1,7 @@
 import React,{useState,createContext,useContext} from 'react'
 import {getUsersAdmin,DeleteuserPost,UploadcsvUsuario,PostDataUserRegister,getDataCountUsersAdmin,
-    getDataAdmin,setModule,GetModule,DeleteModule} from '../../apis/ApiData'
+    getDataAdmin,setModule,GetModule,DeleteModule,getDataAll,uploadImg,
+    UpdateAdminAll} from '../../apis/ApiData'
 
 let isAllowedToken=localStorage.getItem("secure_token")
 export const GetUsersDataAdmin = createContext()
@@ -17,6 +18,17 @@ export const GetUsersContext = ({children}) => {
     const [getCountDateUsers, setGetCountDateUsers] = useState([])
     const [getModuleU, setGetModuleU] = useState([])
     const [moduleUsers, setModuleUsers] = useState([])
+    const [adminGetData,setAdminGetData] = useState([])
+    
+
+    const getAdminDataAll = async (id) => {
+        try {
+            const response = await getDataAll()
+            setAdminGetData(response.data.data)
+        } catch (error) {
+            return error
+        }
+    }
     const getCountData = async () => {
         try {
             const response = await getDataCountUsersAdmin(isAllowedToken);
@@ -118,6 +130,30 @@ export const GetUsersContext = ({children}) => {
             setModuleUsers(moduleUsers.filter(getuser => getuser.IDmodulo !==id))
  
         } catch (error) {
+            return error 
+        }
+      }
+      const uploadImgAdminAll = async(imgData) =>{
+        try {
+            const response = await uploadImg(imgData)
+            
+            return response
+        } catch (error) {
+            return error
+        }
+      }
+      const updateDataAdmin = async (postDataUserRegister) => {
+        try {
+            const response = await UpdateAdminAll(postDataUserRegister)
+            const data =  response.data.data[0];
+            ;
+            let email = data.correo;
+           
+            setAdminGetData(postDataUserRegister.map((post  => post.email === email ? response.data.data[0]:post)))
+            
+            
+            return response
+        } catch (error) {
             return error
         }
       }
@@ -142,7 +178,11 @@ export const GetUsersContext = ({children}) => {
         getModule,
         getModuleU,
         setGetModuleU,
-        DeleteModuleU
+        DeleteModuleU,
+        getAdminDataAll,
+        adminGetData,
+        uploadImgAdminAll,
+        updateDataAdmin
 
     }}>
 

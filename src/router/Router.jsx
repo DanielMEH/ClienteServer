@@ -27,6 +27,7 @@ import { Contactanos } from "../pages/Contactanos";
 import { ModalModule } from "../components/ModalModule";
 import axios from "axios";
 import { PlanificCalendar } from "../layout/PlanificCalendar";
+import { AyudaAdmin } from "../layout/AyudaAdmin";
 
 export const Router = () => {
 
@@ -68,7 +69,7 @@ export const Router = () => {
     let tokeVerify = token ? token : null;
     usersData.permisions= [
       "superAdmin", "inventario", "categoria", "usuario", "notificacion", "producto",
-       "proveedor", "compras", "analityc", "perfil", "dasboard","shope"]
+       "proveedor", "compras", "analityc", "perfil", "dasboard","shope","ayudaAdmin"]
     usersData.tokeVerify = tokeVerify
   }
 
@@ -104,6 +105,18 @@ export const Router = () => {
                 }
               >
                 <Inventory />
+              </ProtectedRouter>
+            }
+          />
+            <Route
+            path="/ayudaAdmin"
+            element={
+              <ProtectedRouter
+                isAllowed={
+                  !!users && users.permisions.includes("ayudaAdmin")
+                }
+              >
+                <AyudaAdmin />
               </ProtectedRouter>
             }
           />

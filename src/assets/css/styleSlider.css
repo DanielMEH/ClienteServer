@@ -79,3 +79,64 @@
   border-top: solid 20px  transparent !important;
   
 }
+
+.bg-clound{
+
+  background: red;
+  padding: 2px;
+  background: linear-gradient(90deg,#fff, #009AFA 100%, #1cd09d 100%);
+  
+
+}
+
+.bg-clound:hover{
+  animation: bg-clound 1s infinite;
+}
+
+@keyframes bg-clound {
+  0% {
+    background: linear-gradient(36deg, #fff,#fff, #1cd09d, #009AFA 100% );
+    
+  }
+  10% {
+    background: linear-gradient(72deg, #fff, #fff, #009AFA 100%, #1cd09d 100%);
+  
+  }
+  20% {
+    background: linear-gradient(108deg, #fff, #fff, #009AFA 100%, #1cd09d 100%);
+  
+  }
+  30% {
+    background: linear-gradient(144deg, #fff, #fff, #1cd09d 100%, #009AFA 100%);
+  
+  }
+  40% {
+    background: linear-gradient(180deg, #fff, #fff, #009AFA 100%, #1cd09d 100%);
+  
+  }
+  50% {
+    background: linear-gradient(216deg, #fff, #fff, #009AFA 100%, #1cd09d 100%);
+  
+  }
+  60% {
+    background: linear-gradient(252deg, #fff,  #fff,#009AFA 100%, #1cd09d 100%);
+  
+  }
+  70% {
+    background: linear-gradient(288deg, #fff, #fff #009AFA 100%, #1cd09d 100%);
+  
+  }
+  80% {
+    background: linear-gradient(324deg, #fff, #fff, #009AFA 100%, #1cd09d 100%);
+  
+  }
+  90% {
+    background: linear-gradient(360deg, #fff, #fff, #009AFA 100%, #1cd09d 100%);
+  
+  }
+  100% {
+    background: linear-gradient(396deg, #fff, #fff, #1cd09d 100%, #009AFA 100%);
+
+    
+  }
+}
