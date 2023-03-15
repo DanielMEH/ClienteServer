@@ -71,3 +71,5 @@ export const UpdateAdminAll = async (data) => await axios.put(`${urlServer}/upda
     }
 
 })
+// ? Path: src\apis\ApiData.jsx obtener datos de productos
+export const getProducts = async () => await axios.get(`${urlServer}/getProducts`)
