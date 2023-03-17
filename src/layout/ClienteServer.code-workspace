@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../serverStored"
+		},
+		{
+			"path": "../../../Profile"
+		}
+	],
+	"settings": {}
+}
