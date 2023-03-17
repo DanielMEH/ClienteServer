@@ -72,10 +72,12 @@ export const UpdateAdminAll = async (data) => await axios.put(`${urlServer}/upda
 
 })
 
-// post categorias
+// ? post categorias
 export const postCategorias = async (data) => await axios.post(`${urlServer}/category`,{data},{
     headers: {
         "x-id-token":accessToken
     }
 
 })
+// ? obtiene todos los productos
+export const getProducts = async () => await axios.get(`${urlServer}/getProducts`)
