@@ -13,7 +13,7 @@ import React, {
   import "ag-grid-enterprise";
   import plus from "../assets/icons/plus.svg";
   import { AG_GRID_LOCALE_EN } from "../locale/locale";
-  import OpcionTabledCrud from "./OpcionTabledCrud";
+  import OpcionesCategory from "./OpcionesCategory";
   import {RegisterCategorys} from "./RegisterCategorys";
   import { checkboxSelection } from "./ChackSelection";
   import { headerCheckboxSelection } from "./ChackSelection";
@@ -21,28 +21,33 @@ import React, {
   import {ChackSelection} from "./ChackSelection";
   import { setNormal} from "./ChackSelection";
   import UploadExcel from "./UploadExcel";
-  import {useGetUsers} from "../hooks/context/GetUsersContext"
+  
+  import { ContextCategory} from '../hooks/context/ContextCategory'
+
+  import {useContextCategory} from "../hooks/context/ContextCategory"
   
   moment.locale("es");
   
   export const DatatableCategorys = () => {
+    const {dataGategorias,
+      getDataCategorias} = useContextCategory()
+    
   
-    const {getUsersAdmins,getUsers,getCountData,getCountDateUsers,
-      getActivosUsers,
-      getInactivosUsers } = useGetUsers()
       const [loading, setLoading] = useState(true)
   
     useEffect(() => {
       const initial = async () => {
-       await  getUsersAdmins()
-       await  getCountData()
+       
+       await  getDataCategorias();
         setLoading(false)
       }
   
       initial()
   
     },[])
-   
+
+    // count categorias 
+
     const defaultColDef  = ChackSelection()
     const gridRef = useRef();
   
@@ -52,8 +57,8 @@ import React, {
   
     const [columnDefs, setColumnDefs] = useState([
       {
-        headerName: "Correo",
-        field: "correo",
+        headerName: "Identificador",
+        field: "_id",
         rowDrag: true,
         checkboxSelection: checkboxSelection,
         headerCheckboxSelection: headerCheckboxSelection,
@@ -62,51 +67,48 @@ import React, {
         chartDataType: 'correo'
       },
       {
-        headerName: "Contraseña",
-        field: "password",
+        headerName: "Nombre",
+        field: "name_category",
         chartDataType: 'email',
         filter: "agTextColumnFilter",
         
+        cellEditorParams:(params)=>{
+          return {
+            
+          }
+        }
+        
+        
       },
       {
-        headerName: "Identificador",
-        field: "idAccount",
+        headerName: "Descripción",
+        field: "description",
         filter: "agTextColumnFilter",
         chartDataType: 'id'
       },
       {
-        headerName: "Hora de creacion de cuenta",
-        field: "hora",
+        headerName: "Fecha",
+        field: "updatedAt",
         chartDataType: 'body',
         filter: "agTextColumnFilter",
       },
-      {
-        headerName: "Fecha de creación",
-        field: "fecha",
-        chartDataType: 'postId',
-        filter: "agTextColumnFilter",
-      },
-      {
-        headerName: "Estado",
-        field: "estado",
-        chartDataType: 'postId',
-        filter: "agTextColumnFilter",
-      },
+    
       {
         headerName: "Opciones",
         field: "Settings",
-        cellRenderer: OpcionTabledCrud,
+        cellRenderer: OpcionesCategory,
         
       },
     ]);
    
   
     const handleShowModel = () => {
+   
       StateModel(!stateModel);
     };
-    const handleModelExcel = () => {
-      setExcelModel(!ExcelModel);
-    };
+
+   
+
     const onBtnExport = useCallback(() => {
       gridRef.current.api.exportDataAsCsv();
     }, []);
@@ -174,10 +176,14 @@ import React, {
         document.getElementById('filter-text-box').value
       );
     }, []);
+
+  
     return (
       <>
       <UploadExcel estado={ExcelModel}/>
+      < ContextCategory>
         <RegisterCategorys estado={stateModel} />
+      </ContextCategory>
         <div className="panel_opciones bg-white w-[100%] mx-auto mt-10 mb-1  rounded-md p-4">
           <div className="plus_panel flex justify-between items-center">
           <section className="items-center flex">
@@ -188,7 +194,7 @@ import React, {
                     <path fill="#3498DB" d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm10 10h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zM17 3c-2.206 0-4 1.794-4 4s1.794 4 4 4s4-1.794 4-4s-1.794-4-4-4zM7 13c-2.206 0-4 1.794-4 4s1.794 4 4 4s4-1.794 4-4s-1.794-4-4-4z"/></svg>
                 </span>
                 <span className="text-[#3498DB] mx-1"> Categorias</span>
-                <span className="text-[#3498DB] mx-1">{getCountDateUsers}</span>
+                <span className="text-[#3498DB] mx-1">{dataGategorias.length}</span>
               </div>
             </section>
           
@@ -226,23 +232,7 @@ import React, {
               </span>
               <span>Exportar a excel</span>
             </button>
-            <button className="flex items-center border mx-1 p-1 rounded-md"
-            onClick={handleModelExcel}>
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="#0c6e36"
-                    d="M4 3h14a2 2 0 0 1 2 2v7.08a6.01 6.01 0 0 0-4.32.92H12v4h1.08c-.11.68-.11 1.35 0 2H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2m0 4v4h6V7H4m8 0v4h6V7h-6m-8 6v4h6v-4H4m14.44 2v2h4v2h-4v2l-3-3l3-3"
-                  />
-                </svg>
-              </span>
-              <span>Importar archivo excel </span>
-            </button>
+          
             <button onClick={onBtPrint} className="flex items-center border mx-1 p-1 rounded-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -285,7 +275,7 @@ import React, {
               <path fill="#3498DB" fillRule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/></svg>
             </span>
             <span>
-            Estadisticas de los primeros 5 productos
+            Estadisticas de los primeros 5 Categorias
   
             </span>
             </div>
@@ -298,7 +288,7 @@ import React, {
               <path fill="#3498DB" fillRule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/></svg>
             </span>
             <span>
-           Todos los productos
+           Todos los Categorias
   
             </span>
             </div>
@@ -309,12 +299,12 @@ import React, {
         <span className="text-green-500 flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4"><path d="M44 14L24 4L4 14v20l20 10l20-10V14Z"/><path stroke-linecap="round" d="m4 14l20 10m0 20V24m20-10L24 24M34 9L14 19"/></g></svg>
 
-          <span> Activos {getActivosUsers} </span></span>
+          <span> Activos </span></span>
         </div>
         <div className="bg-white p-2 rounded-lg">
         <span className="text-[red] flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4"><path d="M44 14L24 4L4 14v20l20 10l20-10V14Z"/><path stroke-linecap="round" d="m4 14l20 10m0 20V24m20-10L24 24M34 9L14 19"/></g></svg>
-             <div className="span mx-1">Inactivos {getInactivosUsers}</div></span>
+             <div className="span mx-1">Inactivos </div></span>
         </div>
   
         </div>
@@ -348,7 +338,7 @@ import React, {
             ref={gridRef}
             localeText={AG_GRID_LOCALE_EN}
             columnDefs={columnDefs}
-            rowData={getUsers}
+            rowData={dataGategorias}
             defaultColDef={defaultColDef}
             animateRows={true}
             rowGroupPanelShow="always"

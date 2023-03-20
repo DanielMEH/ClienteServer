@@ -336,3 +336,36 @@ export const AG_GRID_LOCALE_EN = {
 
 }
 
+export const weekDays = ["DO", "LU", "MA", "MI", "JU", "VI", "SA"]
+	export const gregorian_en_lowercase = {
+		name: "gregorian_en_lowercase",
+		months: [
+		  ["Enero", "Enero"],
+		  ["Febrero", "feb"],
+		  ["Marzo", "mar"],
+		  ["Abril", "apr"],
+		  ["Mayo", "may"],
+		  ["Junio", "jun"],
+		  ["Julio", "jul"],
+		  ["Agosto", "aug"],
+		  ["Septiembre", "sep"],
+		  ["Octubre", "oct"],
+		  ["Noviembre", "nov"],
+		  ["Diciembre", "dec"],
+		],
+		weekDays: [
+		  ["saturday", "sat"],
+		  ["sunday", "sun"],
+		  ["monday", "mon"],
+		  ["tuesday", "tue"],
+		  ["wednesday", "wed"],
+		  ["thursday", "thu"],
+		  ["friday", "fri"],
+		],
+		digits: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+		meridiems: [
+		  ["AM", "am"],
+		  ["PM", "pm"],
+		],
+	  };
+	

@@ -28,6 +28,7 @@ import { ModalModule } from "../components/ModalModule";
 import axios from "axios";
 import { PlanificCalendar } from "../layout/PlanificCalendar";
 import { AyudaAdmin } from "../layout/AyudaAdmin";
+import { EditarProduct } from "../components/FormProduct/EditarProduct";
 
 export const Router = () => {
 
@@ -190,6 +191,18 @@ export const Router = () => {
                 }
               >
                 <Notification />
+              </ProtectedRouter>
+            }
+          />
+          <Route
+            path="/admin/productos/editar/:id"
+            element={
+              <ProtectedRouter
+                isAllowed={
+                  !!users 
+                }
+              >
+                <EditarProduct/>
               </ProtectedRouter>
             }
           />

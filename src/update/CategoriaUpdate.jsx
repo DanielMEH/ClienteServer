@@ -12,7 +12,7 @@ import "../assets/css/styleSlider.css"
 import {useContextCategory} from "../hooks/context/ContextCategory"
 
 
-export const  RegisterCategorys = ({estado=false }) => {
+export const  CategoriaUpdate = ({estado=false, data }) => {
   const {postDataCategorias} = useContextCategory()
   const navigate = useNavigate(); 
  
@@ -41,12 +41,12 @@ export const  RegisterCategorys = ({estado=false }) => {
     }>
       <ToastContainer />
       
-      <div className="form-signup w-4/5 sm:w-96 mx-auto sm:mx-auto mt-5 fixed inset-0 my-auto ">
+      <div className="form-signup w-4/5 sm:w-96 mx-auto sm:mx-auto mt-5 relative ">
         <div className="container-signup  border shadow-2xl pb-1 rounded-lg bg-white ">
       <button className="bg-[#fe5f57] rounded-full absolute right-1 top-1"
       onClick={(handleShow)}><img src={x} alt="" /></button>
           <h2 className="text-xl font-semibold mt-2 mb-5 pt-5 text-center  ">
-            Crear categoria
+            Actualizar Categoria
           </h2>
         
           <Formik
@@ -97,7 +97,6 @@ export const  RegisterCategorys = ({estado=false }) => {
               <div
                 className="Fiel-email bg-white  flex items-center mx-2 my-1
                            border-solid border-2 border-[#1876F2]  rounded
-                         
                              "
               >
                 <div className=" icons py-2 px-2 text-gray-400">
@@ -162,6 +161,25 @@ export const  RegisterCategorys = ({estado=false }) => {
                   name="description"
                 />
               </div>
+<div className="list_options flex justify-between  items-center">
+
+             <section>
+             <label
+                htmlFor="estado"
+                className="block mb-2 text-sm font-medium text-gray-900 mx-2 py-1 items-center
+                "
+              >
+                Estado
+              </label>
+              <Field as="select" name="estado" className="w-full mx-2  rounded cursor-pointer outline-none py-2 border border-[#05bdc4]">  
+              <option value="Inactivo">Inactivo</option>
+             <option value="Activo">Activo</option>
+           
+             
+           </Field>
+             </section>
+
+</div>
               <div className="flex justify-between m-3">
                 <Link to="ayuda">
                   <p>

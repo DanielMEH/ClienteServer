@@ -54,6 +54,7 @@ export const DataTableUsers = () => {
     {
       headerName: "Correo",
       field: "correo",
+      
       rowDrag: true,
       checkboxSelection: checkboxSelection,
       headerCheckboxSelection: headerCheckboxSelection,
@@ -89,6 +90,7 @@ export const DataTableUsers = () => {
     {
       headerName: "Estado",
       field: "estado",
+      cellStyle: (params) => (params.value === "Activo" ? { color: "green" } : { color: "red" }),
       chartDataType: 'postId',
       filter: "agTextColumnFilter",
     },
@@ -174,6 +176,10 @@ export const DataTableUsers = () => {
       document.getElementById('filter-text-box').value
     );
   }, []);
+
+  const onSelectionChanged = (event)=>{
+    console.log(event);
+  }
   return (
     <>
     <UploadExcel estado={ExcelModel}/>
@@ -369,6 +375,7 @@ export const DataTableUsers = () => {
           rowSelection={"multiple"}
           enableCharts={true}
           cacheQuickFilter={true}
+          onSelectionChanged={onSelectionChanged}
         ></AgGridReact>
       </div>
     </>

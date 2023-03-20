@@ -81,7 +81,7 @@ export const GetUsersContext = ({children}) => {
             const response = await PostDataUserRegister(postDataUserRegister);
           
             setGetUsers([...getUsers,response.data.data[0][0]])
-            console.log(response.data.data[0]);
+      
             if(response.data.data[0].estado === "Activo") {
                 setGetActivosUsers(getActivosUsers+1)
             }else{

@@ -79,5 +79,46 @@ export const postCategorias = async (data) => await axios.post(`${urlServer}/cat
     }
 
 })
+
+// ? delete category
+export const deleteCategory = async (id) => await axios.delete(`${urlServer}/category/${id}`,{
+    headers: {
+        "x-id-token":accessToken
+    }
+})
+
+// ? Path: src\apis\ApiData.jsx obtener todas la categorias
+export const getCategorias = async () => await axios.get(`${urlServer}/category/${accessToken}`)
+
+// ? Path: src\apis\ApiData.jsx actualizar categorias
+export const updateCategorias = async (id,data) => await axios.put(`${urlServer}/category/${id}`,{data},{
+    headers: {
+        "x-id-token":accessToken
+    }
+})
 // ? obtiene todos los productos
-export const getProducts = async () => await axios.get(`${urlServer}/getProducts`)
+export const getProducts = async () => await axios.get(`${urlServer}/getProducts/${accessToken}`)
+// ? insertar productos validación del token
+export const postProductos = async (data) => await axios.post(`${urlServer}/createProducts`,{data},{
+    headers: {
+        "x-id-token":accessToken
+    }
+})
+
+export const deleteproducto = async (id) => await axios.delete(`${urlServer}/deleteProducts/${id}`,{
+    headers: {
+        "id-token":accessToken
+    }
+})
+// ? Update product
+export const updateProducto = async (id,data) => await axios.put(`${urlServer}/updateProducts/${id}`,{data},{
+    headers: {
+        "id-token":accessToken
+    }
+})
+
+export const getProductsId = async (id) => await axios.get(`${urlServer}/getProductsId/${id}`,{
+    headers: {
+        "id-token":accessToken
+    }
+})

@@ -2,6 +2,7 @@ import React from 'react'
 import { MenuLateral } from '../components/MenuLateral'
 import {DatatableProduct} from '../components/DatatableProduct'
 import {ContextProduxt} from "../hooks/context/ContextProduxt"
+import { ContextCategory} from '../hooks/context/ContextCategory'
 export const Product = () => {
   
   return (
@@ -19,10 +20,13 @@ export const Product = () => {
        </div>
 
        <div className="container_cont">
+        <ContextCategory>
          <ContextProduxt>
         <DatatableProduct/>
 
          </ContextProduxt>
+
+        </ContextCategory>
        </div>
      </div>
    </div>

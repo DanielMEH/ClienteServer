@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import transition from "react-element-popper/animations/transition"
-import "./style.css"
+
 import DatePicker from "react-multi-date-picker";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import InputIcon from "react-multi-date-picker/components/input_icon"
