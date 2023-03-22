@@ -46,7 +46,7 @@ export const Slide = () => {
                 onClick={nextImagen}>
                     <FontAwesomeIcon icon={faAngleRight}/>
                 </button>
-                <div className="div">
+                <div className="div hidden">
                     {imagenActaul===0  ? <p className="text-2xl font-bold text-cyan-900  animate__animated animate__fadeInUp
                     absolute left-[30rem] w-80 bottom-10 tansp text-center">
                         Con nuestra pasion y voluntad te brindamos el mejor servicio</p> : null}

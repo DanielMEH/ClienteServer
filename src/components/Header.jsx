@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link,  NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import logo from "../assets/logo/logo peque.png"
 import { faSearch,faAngleRight, faHome, faUser, faCircleUser,faLayerGroup,
 faCloud,faHeart,faAddressBook,faHandshake,faGear } from "@fortawesome/free-solid-svg-icons";
 import 'animate.css';
@@ -24,9 +25,7 @@ export const Header = () => {
     <div className="menu_l flex items-center justify-between">
         <div className="title">
         <div className="d">
-            <h1 className="text-[#1876F2] text-3xl font-bold ml-4 my-1 ">
-              Stored
-            </h1>
+            <img src={logo} alt="" width={50}  className="m-2"/>
           </div>
         </div>
       <div className="menu_bars" onClick={()=> {
@@ -145,12 +144,11 @@ export const Header = () => {
       </div>
     </div>
     </div>
-      <header className=" hed_responsive border-b-2 py-1 border-gray-100  flex w-full justify-around items-center  ">
+      <header className=" hed_responsive border-b-2  border-gray-100
+        flex w-full justify-around items-center  ">
         <div className=" flex  items-center">
           <div className="self_t">
-            <h1 className="text-[#1876F2] text-3xl font-bold ml-2 my-1  mr-1">
-              Stored
-            </h1>
+          <img src={logo} alt="" width={100} className="py-1"/>
           </div>
 
           <div className="w-full">
