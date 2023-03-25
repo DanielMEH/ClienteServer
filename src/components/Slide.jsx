@@ -34,7 +34,7 @@ export const Slide = () => {
             return (
                 <div className=''>{imagenActaul === index &&(
                     <img key={index} src={imagen} alt="imagen" className='
-                    animate__animated animate__fadeIn w-[40rem] rounded-md
+                    animate__animated  animate__fadeIn w-[20rem] lg:w-[40rem] rounded-md
                     cursor-pointer' />
                     
 

@@ -14,10 +14,11 @@ export const Footer = () => {
   return (
     <>
       <footer className="fotter_bg  lg:mt-36 pt-10">
+        <h2 className="text-[#2e86c1] mx-6 block">Invensys</h2>
         <div className=" max-w-7xl mx-auto ">
         <div className="flex  justify-between">
           <div className="mx-3 grid-cols-1 sm:grid-cols-2 grid md:grid-cols-3 lg:grid-cols-4">
-          <div className="Slogan">
+          <div className="Slogan hidden lg:block">
           <h2 className="text-[#1876F2] text-3xl font-bold ml-2 my-1  mr-1">
               Stored
             </h2>
@@ -29,32 +30,32 @@ export const Footer = () => {
           </div>
           <div className="serviceSection m-3">
             <ul>
-              <li className=" ">
-                <Link to={"/"} className="flex justify-between  items-center py-2 hover:underline text-gray-800">
-                  <span>Contactanos</span> 
-                  
-                  </Link></li>
-              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Servicios  </Link></li>
-              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Documentación  </Link></li>
-              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800 "> Recursos para desarroladores  </Link></li>
-              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Certificaciones  </Link></li>
-              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Blogs  </Link></li>
-              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Compañia  </Link></li>
+            <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Servicios  </Link></li>
+
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Servicios  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Documentación  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800 "> Recursos para desarroladores  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Certificaciones  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Blogs  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Compañia  </Link></li>
             </ul>
           </div>
+          <div className="div md:hidden mx-4 h-[2px] bg-white w-full block rounded-full"></div>
           <div className="layautSection m-3">
             <ul>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Quienes somos  </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Ayuda  </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Como funciona stored  </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Privacidad de datos  </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Información legal  </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Terminos Y condiciones  </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Hola  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Quienes somos  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Ayuda  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Como funciona stored  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Privacidad de datos  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Información legal  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Terminos Y condiciones  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center md:py-1 hover:underline text-gray-800"> Hola  </Link></li>
             </ul>
 
           </div>
-        <div className="w-48">
+          <div className="div md:hidden mx-4 h-[2px] bg-white w-full block rounded-full"></div>
+
+        <div className="w-48 mx-4 mt-4 md:mt-0">
           <article>
             <strong>Suscríbete a nuestro plataforma</strong>
             <p>

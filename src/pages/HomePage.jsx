@@ -36,7 +36,7 @@ export const HomePage=() =>{
        manejo de tu negocio...!</h2>
        <p
        className="text-slate-400 m-2 md:m-0 m md:text-start md:py-2 md:text-2xl text-center"
-       >¡Los pequeños emprendedores y comerciantes merecen mucho más con invensys expade
+       >¡Los pequeños emprendedores y comerciantes merecen mucho más con invensys expande
         tu negocio! 100% gratuito</p>
         <p className="h-2 mx-4 md:m-0 bg-emerald-400 rounded-full animate__animated animate__bounceInLeft"></p>
       <Link to={"/login"} className="
