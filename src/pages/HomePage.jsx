@@ -191,7 +191,7 @@ Impulsamos en la inovacion
       <div className="block md:hidden">
         <h2 className="text-center text-2xl">Información sobre <span className="text-[#3498db]">Invensys</span> </h2>
         <div className="cards">
-          <section className="bg-white mt-2 w-[90%] mx-auto rounded-lg p-2 ">
+          <section className="bg-white shadow-md mt-2 w-[90%] mx-auto rounded-lg p-2 ">
 
             <h2 className="text-xl font-bold">Manejo de tu inventario mas facil y comodo</h2>
             <p>
@@ -200,7 +200,7 @@ Impulsamos en la inovacion
             </p>
 
           </section>
-          <section className="bg-white mb-4 mt-2 w-[90%] mx-auto rounded-lg p-2 ">
+          <section className="bg-white shadow-md mb-4 mt-2 w-[90%] mx-auto rounded-lg p-2 ">
 
 <h2 className="text-xl font-bold">Estadisticas y informes de tu negocio</h2>
 <p>
