@@ -24,9 +24,9 @@ export const HomePage=() =>{
   });
   document.body.style  ="overflow-x: hidden"
   return (
-  
+
     <>
-    <div className="">
+    <div className="w-full overflow-x-hidden">
     <Header/>
     <div className=" colorcamb ">
     <div className="content-home">
@@ -40,7 +40,7 @@ export const HomePage=() =>{
         tu negocio! 100% gratuito</p>
         <p className="h-2 mx-4 md:m-0 bg-emerald-400 rounded-full animate__animated animate__bounceInLeft"></p>
       <Link to={"/login"} className="
-        bg-white py-3 inline-block 
+        bg-white py-3 inline-block
        mt-12 mb-36 rounded-sm px-5 text-1xl hover:text-white
         duration-300 hover:bg-transparent border hover:border-emerald-400 btn-y ">Comienza ya </Link>
       <Link to={"/"} className="
@@ -67,7 +67,7 @@ export const HomePage=() =>{
       <FontAwesomeIcon icon={faBolt} className="text-[#fde047] absolute top-20
        lg:left[3rem]  xl:left[10rem]  m-1" />
         <img src={curba2} alt="" className="absolute bottom-[-16.9rem] left-[-6rem] w-36" />
-      <img src="https://res.cloudinary.com/dkqp3wkbi/image/upload/v1676216582/kodiarLogo/mockuoFrame_hbrvph.png" 
+      <img src="https://res.cloudinary.com/dkqp3wkbi/image/upload/v1676216582/kodiarLogo/mockuoFrame_hbrvph.png"
       className="h-64 lg:h-96 rounded  p-10"
        type="imagen" title="Stored" alt="Stored" style={{marginBottom:'10rem'}}/>
       </div>
@@ -85,12 +85,12 @@ export const HomePage=() =>{
         <span className="text-md lg:text-xl   text-slate-700 fade-right">
       Invensys es una aplicación de administración para el
        inventario de los productos de tu negocio, en la cual podras
-        llevar un control permanente de todos ellos, necesidades de 
+        llevar un control permanente de todos ellos, necesidades de
         abastecimiento, reporte de vencimientos, rotación de productos y
          podras utilizarla para el manejo administrativo y financiero de tu negocio.
 
         </span>
-        
+
       </div>
     </div>
       <div className="text-center fuente-t1  ">
@@ -134,7 +134,7 @@ Que esperas de nuestra plataforma?
         </div>
         <div className="container paragraph  ">
           <p className="text-gray-800   mx-3 text-center text-xl border-t border-t-slate-200">
-            Podras crear usuarios que ayude llevar un 
+            Podras crear usuarios que ayude llevar un
           mejor control de  tu inventario, a travez de roles que faciliten el manejo de tu negocio. </p>
         </div>
       </section>
@@ -161,7 +161,7 @@ Impulsamos en la inovacion
             <div className="span">
               Invensys un servicio de alta calidad.
             </div>
-          <span className="font3s"> 
+          <span className="font3s">
           <div className="text-md">
           Nuestra plataforma impulsa la innovación con herramientas que
              aumentan la seguridad de tu negocio
@@ -175,11 +175,11 @@ Impulsamos en la inovacion
           después de 1 año</p>
         </article>
       </div>
-      
+
       <div className=" lg:mr-10 my-10 flex lg:self-end bg-slik ">
         <img src={imagen7} alt="" className="w-full"data-aos="fade-left"
     />
-      </div> 
+      </div>
     </div>
     <div className="text-center fuente-t1 ">
       <span className="text-2xl md:text-6xl ">
@@ -196,7 +196,7 @@ Impulsamos en la inovacion
             <h2 className="text-xl font-bold">Manejo de tu inventario mas facil y comodo</h2>
             <p>
               Con invensys podra llevar un control permanente de todos los productos,
-              necesidades de abastecimiento, reporte de vencimientos y rotaciond e sus productos. 
+              necesidades de abastecimiento, reporte de vencimientos y rotaciond e sus productos.
             </p>
 
           </section>
@@ -212,7 +212,7 @@ Representación de graficas, ayudando un mejor analisis de tu negocio para que p
         </div>
       </div>
     <div className="max-w-7xl mx-auto justify-center">
-      
+
       <div className="flex flex-col w-60 md:w-full  mx-auto sm:flex-row justify-center">
         <div className="  sm:min-w-60 mx-2">
           <Link to={"/login"}  className="
@@ -223,9 +223,9 @@ Representación de graficas, ayudando un mejor analisis de tu negocio para que p
               <FontAwesomeIcon className="my-1 mx-2 text-xl" icon={faChevronRight} /> </Link>
         </div>
         <div className="sm:min-w-60">
-          <Link to={"/signup"}  className=" px-4 py-3.5 flex items-center rounded-xl 
+          <Link to={"/signup"}  className=" px-4 py-3.5 flex items-center rounded-xl
              w-full truncate text-sm md:text-xl justify-between
-            text-black hover:bg-transparent  border-2 shadow-lg hover:shadow-gray-500/50 
+            text-black hover:bg-transparent  border-2 shadow-lg hover:shadow-gray-500/50
              border-black mb-1 md:mb-12
              transition duration-150 ease-in-out drop-shadow-md  ">
               <span className="mt-1 font-bold">Iniciar sesión en stored</span>
@@ -234,7 +234,7 @@ Representación de graficas, ayudando un mejor analisis de tu negocio para que p
       </div>
     </div>
    <Slide/>
-    <Footer/> 
+    <Footer/>
     </div>
     </>
   )

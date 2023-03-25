@@ -11,11 +11,13 @@ export const Header = () => {
   const [show, setShow] = useState(false);
 
   if (show === true) {
-    document.body.style.overflow="hidden"
+   
     document.body.classList.add("activeBody");
+    document.body.style.overflow = "hidden";
   }else{
-    document.body.style.overflow="scroll"
+   
     document.body.classList.remove("activeBody");
+    document.body.style.overflow = "auto";
   }
     
   

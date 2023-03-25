@@ -7,7 +7,10 @@
     
 }
 
+body{
 
+    overflow-x: hidden;
+}
 .lik::after{
     
     content: "";
@@ -190,6 +193,23 @@ overflow-y: hidden;
     }
 
     @media screen and (max-width: 500px) {
+
+        .h5-mktg {
+            font-family: "Mona Sans","Mona Sans Header Fallback",-apple-system,BlinkMacSystemFont,
+            "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+            font-feature-settings: unset;
+            
+            color: white;
+            font-size: 30px ;
+           width:100%;
+           
+            line-height: 25px ;
+            font-weight: bold;
+            margin-top: 2rem;
+            display: block;
+            letter-spacing: -0.00em !important;
+        
+        }
         .menu_lateral{
             width: 100%;
             left: -100%;

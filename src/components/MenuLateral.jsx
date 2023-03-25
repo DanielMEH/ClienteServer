@@ -53,6 +53,7 @@ export const MenuLateral = () => {
   }, [])
 
 
+     document.body.style.overflow = "hidden";
 
 
   if(type === "user"){
@@ -85,7 +86,7 @@ export const MenuLateral = () => {
 
   return (
     <>
-    <div className="absolute left-[0%] w-full h-full  top-0 lg:relative
+    <div className="absolute left-[-50%] w-full h-full  top-0 lg:relative
     lg:w-auto lg:h-auto lg:left-0 lg:top-0">
     <div className="
 

@@ -16,7 +16,7 @@ export const Footer = () => {
       <footer className="fotter_bg  lg:mt-36 pt-10">
         <div className=" max-w-7xl mx-auto ">
         <div className="flex  justify-between">
-          <div className="mx-3 grid-cols-2 sm:grid-cols-2 grid md:grid-cols-3 lg:grid-cols-4">
+          <div className="mx-3 grid-cols-1 sm:grid-cols-2 grid md:grid-cols-3 lg:grid-cols-4">
           <div className="Slogan">
           <h2 className="text-[#1876F2] text-3xl font-bold ml-2 my-1  mr-1">
               Stored
@@ -34,12 +34,12 @@ export const Footer = () => {
                   <span>Contactanos</span> 
                   
                   </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Servicios  </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Documentación  </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800 "> Recursos para desarroladores  </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Certificaciones  </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Blogs  </Link></li>
-              <li className="my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Compañia  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Servicios  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Documentación  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800 "> Recursos para desarroladores  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Certificaciones  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Blogs  </Link></li>
+              <li className="md:my-1"><span className="circle-f"></span><Link to={"/"} className="flex justify-between  items-center py-1 hover:underline text-gray-800"> Compañia  </Link></li>
             </ul>
           </div>
           <div className="layautSection m-3">
