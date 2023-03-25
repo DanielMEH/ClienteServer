@@ -14,13 +14,13 @@ export const Footer = () => {
   return (
     <>
       <footer className="fotter_bg  lg:mt-36 pt-10">
-        <h2 className="text-[#2e86c1] mx-6 block">Invensys</h2>
+        <h2 className="text-[#2e86c1] mx-6 block text-2xl font-bold">Invensys</h2>
         <div className=" max-w-7xl mx-auto ">
         <div className="flex  justify-between">
           <div className="mx-3 grid-cols-1 sm:grid-cols-2 grid md:grid-cols-3 lg:grid-cols-4">
           <div className="Slogan hidden lg:block">
           <h2 className="text-[#1876F2] text-3xl font-bold ml-2 my-1  mr-1">
-              Stored
+              Invensys
             </h2>
 
             <p className="w-48 ml-2">

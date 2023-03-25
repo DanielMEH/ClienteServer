@@ -77,7 +77,7 @@ export const HomePage=() =>{
       <div className="row hidden xl:block">
        <img src={rowFirst} alt="" className="w-[16rem] lg:w-[30rem] h-42"  />
       </div>
-      <div className="w-[96%] mx:auto md:w-96 relative shadow-2xl bg-white rounded-md border p-10 "data-aos="fade-left">
+      <div className="w-[93%] mx:auto md:w-96 relative shadow-2xl bg-white rounded-md border p-10 "data-aos="fade-left">
         <div className="cir1 h-4 m-1 w-4 absolute bg-red-500 top-0 left-0 rounded-full"></div>
         <div className="cir2 h-4 m-1 w-4 absolute bg-[#fbbf24] top-0 left-6 rounded-full"></div>
         <div className="cir3 h-4 m-1 w-4 absolute bg-green-500 top-0 left-12 rounded-full"></div>
@@ -189,9 +189,9 @@ Impulsamos en la inovacion
       </div>
  {/* ? section cards  */}
       <div className="block md:hidden">
-        <h2 className="text-center text-2xl">Información sobre <span className="text-[#3498db]">Invensys</span> </h2>
+        <h2 className="w-[90%] mb-5  mx-auto font-bold text-2xl">Información sobre <span className="text-[#3498db]">Invensys</span> </h2>
         <div className="cards">
-          <section className="bg-white shadow-md mt-2 w-[90%] mx-auto rounded-lg p-2 ">
+          <section className="bg-white border mb-6 shadow-md mt-2 w-[90%] mx-auto rounded-lg p-2 ">
 
             <h2 className="text-xl font-bold">Manejo de tu inventario mas facil y comodo</h2>
             <p>
@@ -200,7 +200,7 @@ Impulsamos en la inovacion
             </p>
 
           </section>
-          <section className="bg-white shadow-md mb-4 mt-2 w-[90%] mx-auto rounded-lg p-2 ">
+          <section className="bg-white border shadow-md mb-4 mt-2 w-[90%] mx-auto rounded-lg p-2 ">
 
 <h2 className="text-xl font-bold">Estadisticas y informes de tu negocio</h2>
 <p>
