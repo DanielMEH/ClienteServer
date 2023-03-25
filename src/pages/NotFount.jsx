@@ -5,13 +5,15 @@ import "../assets/css/fuente.css"
 export const NotFount = () => {
   return (
     <>
-    <img src={img} alt="not found" className='w-1/4  mt-10 justify-center flex  mx-auto'/>
-    <h1 className=' gg text-center w-2/4 mx-auto
+   <div className="container overflow-y-scroll">
+   <img src={img} alt="not found" className='w-[90%] 
+     lg:w-1/4  mt-10 justify-center flex  mx-auto'/>
+    <h1 className=' gg text-center w-[90%] md:w-2/4 mx-auto
      p-4 text-2xl'
      >
         Este contenido no está disponible o no existe intente con otro.
     </h1>
-        <div className="text-[19px] text-center w-2/4 mx-auto
+        <div className="text-[19px] text-center w[90%] md:w-2/4 mx-auto
      p-4 text-2xl text-black font-normal flex flex-col  h-0 min-h-0 ">
         <span>
         Esto sucede porque el contenido no existe o no está disponible.
@@ -24,6 +26,7 @@ export const NotFount = () => {
         <Link to={"/contactanos"} className="span mt-2 text-[#1876f2] inline-block w-56 text-center mx-auto">Ir al servicio de ayuda</Link>
         </div>
 
+   </div>
     </>
   )
 }
