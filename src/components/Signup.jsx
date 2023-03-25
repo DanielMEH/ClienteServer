@@ -29,7 +29,7 @@ export const Signup = () => {
       <ToastContainer />
       <Header />
     
-      <div className="form-signup w-[96%]  mx-auto rounded-md border animate__animated animate__fadeIn bg-white form md:w-[50rem] w-4/5 sm:3/4 my-9 drop-shadow-2xl">
+      <div className="form-signup w-[94%]  mx-auto rounded-md border animate__animated animate__fadeIn bg-white form md:w-[50rem]  sm:3/4 my-9 drop-shadow-2xl">
       <div className="flex item-center justify-center">
             <div className=" absolute p-2 left-0 text-3xl text-gray-600 ">
               <Link to="/">
