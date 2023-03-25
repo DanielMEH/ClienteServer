@@ -5,7 +5,7 @@ import "../assets/css/fuente.css"
 export const NotFount = () => {
   return (
     <>
-   <div className="container overflow-y-scroll">
+   <div className="container ">
    <img src={img} alt="not found" className='w-[90%] 
      lg:w-1/4  mt-10 justify-center flex  mx-auto'/>
     <h1 className=' gg text-center w-[90%] md:w-2/4 mx-auto
