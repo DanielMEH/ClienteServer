@@ -23,7 +23,7 @@ export const Slide = () => {
     }
     
   return (
-    <div className='flex relative  justify-center  items-center h-96 max-w-7xl mx-auto mt-36'>
+    <div className='flex relative  justify-center  items-center h-96 max-w-7xl mx-auto lg:mt-36'>
         
         <button className=' text-gray-800 rounded-full px-5 py-3   bg-gray-200 inline-block'
         onClick={prevImagen}>

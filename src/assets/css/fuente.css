@@ -22,6 +22,7 @@
     -ms-transform: scale(0);
     -o-transform: scale(0);
     transform: scale(0);
+    z-index: 4000;
 }
 .content-home{
     display: flex;
@@ -147,11 +148,12 @@ overflow-y: hidden;
     width: 35px;
     margin-right: 1rem;
     cursor: pointer;
+    z-index: 1000;
 
 }
 .menu_bars span{
     display: block;
-    height: 5px;
+    height: 3px;
     width: 100%;
     background: #1876F2;
     margin: 5px 0;
@@ -185,6 +187,13 @@ overflow-y: hidden;
     .menu_lateral{
         width: 60%;
         left: -60%;
+    }
+
+    @media screen and (max-width: 500px) {
+        .menu_lateral{
+            width: 100%;
+            left: -100%;
+        }
     }
     .menu_bars{
     
@@ -237,8 +246,8 @@ overflow-y: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: rgb(45, 51, 59);
-    padding: 7px 10px;
+    color: rgb(0, 0, 0);
+    padding: 10px 10px;
 }
 .list ul li .clup:hover{
 
@@ -263,7 +272,7 @@ overflow-y: hidden;
     
 }
 .elementor-background-overlay {
-    background-image: url(https://sense-digital.co/wp-content/uploads/FONDOS-11.png);
+    background-image: url(https://res.cloudinary.com/dkqp3wkbi/image/upload/v1679756405/stored/FONDOS-11_bej4wy.png);
     
     z-index: -100;
     transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
@@ -379,6 +388,26 @@ overflow-y: hidden;
     letter-spacing: -0.03em !important;
     position: relative;
 }
+
+@media screen and (max-width: 500px) {
+    .fuente-t1{
+
+        font-family: "Mona Sans","Mona Sans Header Fallback",-apple-system,BlinkMacSystemFont,
+        "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-feature-settings: unset;
+        color: #404659;
+        font-size: 60px ;
+        line-height: 0px ;
+        font-weight: bold;
+        
+        display: block;
+       
+        
+        position: relative;
+    }
+    
+}
+
 .fuente-t1::after{
 
     content: "";
@@ -415,15 +444,41 @@ overflow-y: hidden;
     letter-spacing: -0.03em !important;
     position: relative; 
 }
+
+
 .font3s{
     font-family: "Mona Sans","Mona Sans Header Fallback",-apple-system,BlinkMacSystemFont,
     "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     font-feature-settings: unset;
     color: #404659;
     font-weight: 500;
-   
+    
     letter-spacing: -0.03em !important;
     position: relative; 
+}
+@media screen and (max-width:500px ) {
+    .font2{
+        font-family: "Mona Sans","Mona Sans Header Fallback",-apple-system,BlinkMacSystemFont,
+        "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-feature-settings: unset;
+        color: #1876F2;
+        font-size: 30px ;
+        line-height: 30px ;
+        font-weight: bold;
+        letter-spacing: -0.03em !important;
+        position: relative; 
+        text-align: center;
+    }
+    .font3s{
+        font-family: "Mona Sans","Mona Sans Header Fallback",-apple-system,BlinkMacSystemFont,
+        "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-feature-settings: unset;
+        color: #404659;
+        font-weight: 500;
+        text-align: center;
+        letter-spacing: -0.03em !important;
+        position: relative; 
+    }
 }
 .scalewrap{
     height: 10px;

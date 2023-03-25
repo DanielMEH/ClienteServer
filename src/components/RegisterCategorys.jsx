@@ -63,6 +63,7 @@ export const  RegisterCategorys = ({estado=false }) => {
             onSubmit={async (values) => {
                
               let response = await postDataCategorias(values);
+              console.log(response);
                 if (response.status === 201) {
                  await toast.success("Exito", {
                     position: "top-right",
@@ -77,7 +78,7 @@ export const  RegisterCategorys = ({estado=false }) => {
                  setEstado(false)             
                    window.location.reload()
                 }else{
-                 await toast.warning("!Ups! Hubo un error inesperado o el correo ya existe", {
+                 await toast.warning("!Ups! Hubo un error inesperado verifique que estes conectado a internet o que la categoria ya exista", {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,

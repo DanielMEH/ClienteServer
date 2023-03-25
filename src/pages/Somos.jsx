@@ -5,7 +5,7 @@ export const Somos = () => {
   return (
     <>
     <Header/>
-     <main class="content-k max-w-7xl mx-auto my-12 ">
+     <main class="content-k max-w-7xl flex  mx-4 my-12 md:mx-auto ">
 
 <div class="contten-1 mk-kodiar">
  <div class="title">

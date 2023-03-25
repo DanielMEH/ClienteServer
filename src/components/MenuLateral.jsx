@@ -26,6 +26,7 @@ export const MenuLateral = () => {
     localStorage.removeItem("response_auth");
     localStorage.removeItem("type");
     localStorage.removeItem("module");
+    localStorage.removeItem("token_token1");
     window.location.href = "/login";
   };
   const fecha = new Date().getFullYear();
@@ -33,6 +34,7 @@ export const MenuLateral = () => {
   // new
   const [usersP, setUsersP] = useState([]);
   const token = localStorage.getItem("secure_token");
+  const token1 = localStorage.getItem("token_token1");
   let type = localStorage.getItem("type")
   let usersData = {
     tokeVerify:"",
@@ -42,7 +44,7 @@ export const MenuLateral = () => {
   useEffect(() => {
     
     async  function getModulesUser(){
-      const response = await axios.get(`http://localhost:3002/getMod/${token}`)
+      const response = await axios.get(`http://localhost:3002/getMod/${token1}`)
      
       const modules = response.data.data
       modules.map((item)=>{

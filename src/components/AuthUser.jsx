@@ -57,7 +57,7 @@ export const AuthUser = () => {
     <>
       <ToastContainer />
     <Header />
-      <div className="form_Login  mx-auto rounded-md border w-4/5 sm:3/4 animate__animated animate__fadeIn bg-white form md:w-[50rem]   my-9 drop-shadow-2xl ">
+      <div className="form_Login  mx-auto rounded-md border w-[96%]  sm:3/4 animate__animated animate__fadeIn bg-white form md:w-[50rem]   my-9 drop-shadow-2xl ">
         <div className="login bg-white z-20 relative rounded-md ">
           <div className="flex item-center justify-center flex-col">
             <div className=" absolute p-2 left-0 text-3xl text-gray-600 ">
@@ -120,6 +120,8 @@ export const AuthUser = () => {
                       localStorage.setItem("auth_cuenta", getData.auth);
                       localStorage.setItem("response_auth", getData.message);
                       localStorage.setItem("module", arrayModule);
+                      localStorage.setItem("token_token1", getData.token1)
+
                  
                       localStorage.setItem("type", response.data.type);
                       if(response.data.type === "user"){

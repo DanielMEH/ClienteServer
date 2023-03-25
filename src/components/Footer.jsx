@@ -13,9 +13,10 @@ export const Footer = () => {
 
   return (
     <>
-      <footer className="fotter_bg mt-36 pt-10">
+      <footer className="fotter_bg  lg:mt-36 pt-10">
         <div className=" max-w-7xl mx-auto ">
         <div className="flex  justify-between">
+          <div className="mx-3 grid-cols-2 sm:grid-cols-2 grid md:grid-cols-3 lg:grid-cols-4">
           <div className="Slogan">
           <h2 className="text-[#1876F2] text-3xl font-bold ml-2 my-1  mr-1">
               Stored
@@ -62,25 +63,26 @@ Obtenga actualizaciones de productos, novedades de la compañía y más.</p>
           <Link to={"/suscribete"}
           className="border border-[#1876F2] p-2 rounded shadow-lg hover:shadow-blue-500/50  mt-2 inline-block">Suscribete</Link>
         </div>
+          </div>
         </div>
         </div>
-        <div className="datacopy  ">
+        <div className="datacopy  overflow-x-scroll ">
           <div className="allsection flex justify-between items-center max-w-7xl mx-auto">
             <div className="enalces_items">
               <ul className="flex gap-8 p-4">
-                <li className="relative  text-[1.1rem] text-cyan-900">
-                  <span className="font-bold"> <FontAwesomeIcon icon={faGlobe}/> Español </span>
+                <li className="relative  text-[1.1rem] text-cyan-900  whitespace-nowrap">
+                  <span className="font-bold "> <FontAwesomeIcon icon={faGlobe}/> Español </span>
                 </li>
                 <li className="relative   text-[1.1rem] text-cyan-900">
-                  <Link to={"/"} className="text-underline">Política de privacidad </Link>
+                  <Link to={"/"} className="text-underline whitespace-nowrap">Política de privacidad </Link>
                 </li>
                 <li className="relative  text-[1.1rem] text-cyan-900">
-                  <Link to={"/"} className="text-underline">Términos</Link>
+                  <Link to={"/"} className="text-underline  whitespace-nowrap">Términos</Link>
                 </li>
                 <li className="relative  text-[1.1rem] text-cyan-900">
-                  <Link to={"/"} className="text-underline">Trabaja con nosotros</Link>
+                  <Link to={"/"} className="text-underline  whitespace-nowrap">Trabaja con nosotros</Link>
                 </li>
-                <li className="relative  text-[1.1rem] text-cyan-900">
+                <li className="relative  text-[1.1rem] text-cyan-900  whitespace-nowrap">
                   <Link to={"/"}>Copyright &copy; {fecha} | Stored</Link>
                 </li>
               </ul>

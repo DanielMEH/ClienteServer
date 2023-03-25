@@ -37,7 +37,6 @@
     "react-multi-date-picker": "^3.3.4",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
-    "react-spinners-css": "^2.0.1",
     "react-toastify": "^9.1.1",
     "sweetalert2": "^11.7.2",
     "typescript": "^4.8.4",

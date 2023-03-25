@@ -11,8 +11,10 @@ export const Header = () => {
   const [show, setShow] = useState(false);
 
   if (show === true) {
+    document.body.style.overflow="hidden"
     document.body.classList.add("activeBody");
   }else{
+    document.body.style.overflow="scroll"
     document.body.classList.remove("activeBody");
   }
     
@@ -20,15 +22,44 @@ export const Header = () => {
   
   return (
 
-    <div className="heander_bg">
+    <div className="heander_bg shadow-md bg-white">
     <div className="heand1">
-    <div className="menu_l flex items-center justify-between">
+    <div className="menu_l flex bg-white items-center justify-between">
         <div className="title">
         <div className="d">
-            <img src={logo} alt="" width={50}  className="m-2"/>
+            <Link to={"/"}>
+            <img src={logo} alt="" width={60}  className="m-2"/>
+            </Link>
           </div>
         </div>
       <div className="menu_bars" onClick={()=> {
+        if (show === false) {
+          setShow(true);
+        } else {
+          setShow(false);
+          
+        }
+      }}>
+          <span className={show === true ?"menu_bar__item1 active  ":
+        "menu_bar__item1 " }>
+
+        </span>
+          <span className={show === true ?"menu_bar__item2 active":
+        "menu_bar__item2" }></span>
+          <span className={show === true ?"menu_bar__item3 active":
+        "menu_bar__item3" }></span>
+      </div>
+      </div>
+    </div>
+    <div className={show === true ? "lateralbg":""}>
+    <div className={show === true ? "menu_lateral activ_Lateral":"menu_lateral "} >
+      <div className="sec1">
+        <div className="t">
+          <div className="flex justify-between items-center">
+          <div className="tj">
+          <h2 className="p-[13px]">Menu</h2>
+          </div>
+          <div className="menu_bars" onClick={()=> {
         if (show === false) {
           setShow(true);
         } else {
@@ -45,39 +76,33 @@ export const Header = () => {
           <span className={show === true ?"menu_bar__item3 active":
         "menu_bar__item3" }></span>
       </div>
-      </div>
-    </div>
-    <div className={show === true ? "lateralbg":""}>
-    <div className={show === true ? "menu_lateral activ_Lateral":"menu_lateral "} >
-      <div className="sec1">
-        <div className="t">
-          <h2 className="p-[6px]">Menu</h2>
+          </div>
           <hr />
           <div className="list">
             <ul>
               <li>
-                <Link to={"/"} className="clup">
+                <Link to={"/"} className="clup  border-b">
                   <span><FontAwesomeIcon icon={faHome}
-                  className="text-slate-500"/> 
+                  className="text-gray-400 text-xl"/> 
                   <span className="ml-2 font-medium">Inicio</span>
                   </span>
                   
-                   <FontAwesomeIcon icon={faAngleRight} className=" mx-3"/></Link>
+                   <FontAwesomeIcon icon={faAngleRight} className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
               <li>
-                <Link to={"/login"} className="clup">
+                <Link to={"/login"} className="clup  border-b">
                <span> <FontAwesomeIcon icon={faUser}
-                  className="text-slate-500 "/> <span className="ml-2">
+                  className="text-gray-400 text-xl "/> <span className="ml-2">
                     Iniciar sesión</span></span>
                 
-                <FontAwesomeIcon icon={faAngleRight} className=" mx-3"/></Link>
+                <FontAwesomeIcon icon={faAngleRight} className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
               <li>
-                <Link to={"/signup"} className="clup">
+                <Link to={"/signup"} className="clup  border-b">
 
                   <span><FontAwesomeIcon icon={faCircleUser} 
-                  className="text-slate-500  "/> <span className="ml-2 font-medium">Crear cuenta</span></span>
-                <FontAwesomeIcon icon={faAngleRight} className=" mx-3"/></Link>
+                  className="text-gray-400 text-xl  "/> <span className="ml-2 font-medium">Crear cuenta</span></span>
+                <FontAwesomeIcon icon={faAngleRight} className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
             </ul>
           </div>
@@ -90,23 +115,23 @@ export const Header = () => {
           <div className="list">
             <ul>
               <li>
-                <Link to={"/"}className="clup">
+                <Link to={"/somos"}className="clup  border-b">
                   <span> <FontAwesomeIcon icon={faLayerGroup}
-                  className="text-slate-500"/> <span className="ml-2 font-medium">Nuestra plataforma</span> </span>
-                <FontAwesomeIcon icon={faAngleRight}  className=" mx-3"/></Link>
+                  className="text-gray-400 text-xl"/> <span className="ml-2 font-medium">Quienes somos</span> </span>
+                <FontAwesomeIcon icon={faAngleRight}  className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
               <li>
-                <Link to={"/"}className="clup">
+                <Link to={"/servicios"}className="clup  border-b">
                   <span> <FontAwesomeIcon icon={faCloud}
-                  className="text-slate-500"/> <span className=" ml-2 font-medium">Servicios</span></span>
-                <FontAwesomeIcon icon={faAngleRight} className=" mx-3"/></Link>
+                  className="text-gray-400"/> <span className=" ml-2 font-medium">Servicios</span></span>
+                <FontAwesomeIcon icon={faAngleRight} className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
               <li>
-                <Link to={"/"}className="clup">
+                <Link to={"/"}className="clup  border-b">
                   <span> <FontAwesomeIcon icon={faHeart}
-                  className="text-slate-500"/> 
+                  className="text-gray-400 text-xl"/> 
                   <span className=" ml-2 font-medium"> Stored</span> </span>
-                <FontAwesomeIcon icon={faAngleRight} className=" mx-3"/></Link>
+                <FontAwesomeIcon icon={faAngleRight} className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
             </ul>
           </div>
@@ -120,23 +145,23 @@ export const Header = () => {
             <ul>
               <li className="
             ">
-                <Link to={"/"}className="clup " >
+                <Link to={"/contactanos"}className="clup " >
                   <span> <FontAwesomeIcon icon={faAddressBook}
-                  className="text-slate-500"/> <span className=" ml-2 font-medium"> Contáctanos</span></span>
-                <FontAwesomeIcon icon={faAngleRight} className=" mx-3"/></Link>
+                  className="text-gray-400 text-xl "/> <span className=" ml-2 font-medium"> Contáctanos</span></span>
+                <FontAwesomeIcon icon={faAngleRight} className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
               <li>
                 <Link to={"/"}className="clup" >
                   <span>
                   <FontAwesomeIcon icon={faHandshake}
-                  className="text-slate-500"/> <span className=" ml-2 font-medium">Servicio al cliente</span></span>
-                <FontAwesomeIcon icon={faAngleRight} className=" mx-3"/></Link>
+                  className="text-gray-400 text-xl "/> <span className=" ml-2 font-medium">Servicio al cliente</span></span>
+                <FontAwesomeIcon icon={faAngleRight} className=" text-gray-400 text-xl  mx-3"/></Link>
               </li>
               <li>
                 <Link to={"/"}className="clup" >
                   <span> <FontAwesomeIcon icon={faGear}
-                  className="text-slate-500"/> <span className=" ml-2 font-medium">Ajustes</span></span>
-                <FontAwesomeIcon icon={faAngleRight} className=" mx-3"/></Link>
+                  className="text-gray-400 text-xl "/> <span className=" ml-2 font-medium">Ajustes</span></span>
+                <FontAwesomeIcon icon={faAngleRight} className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
             </ul>
           </div>
@@ -147,8 +172,10 @@ export const Header = () => {
       <header className=" hed_responsive border-b-2  border-gray-100
         flex w-full justify-around items-center  ">
         <div className=" flex  items-center">
-          <div className="self_t">
+          <div className="self_t lg:mr-4">
+          <Link to="/">
           <img src={logo} alt="" width={100} className="py-1"/>
+          </Link>
           </div>
 
           <div className="w-full">
@@ -165,7 +192,7 @@ export const Header = () => {
                   </NavLink>
                 </li>
                 <li className="relative lik mx-2 p-1 text-[1.1rem] text-cyan-900 todoFont">
-                  <NavLink to="/somos" className="nav-item font-bold  inline-block relative ">
+                  <NavLink to="/somos" className="nav-item font-bold  inline-block relative truncate ">
                    Quiénes somos
                   </NavLink>
                 </li>
@@ -207,8 +234,8 @@ export const Header = () => {
                 to="/login"
                 className={({ isActive }) =>
                   isActive
-                    ? " py-2 relative dad1 text-[1.1rem] active font-bold text-cyan-900"
-                    : " py-2 relative dad1 text-[1.1rem] lik font-bold text-cyan-900"
+                    ? " py-2 relative dad1 text-[1.1rem] active font-bold text-cyan-900 truncate "
+                    : " py-2 relative dad1 text-[1.1rem] lik font-bold text-cyan-900 truncate "
                 }
               >
                 Iniciar sesión
@@ -219,9 +246,9 @@ export const Header = () => {
                 to="/signup"
                 className={({ isActive }) =>
                   isActive
-                    ? `mx-4 border p-1.5 font-bold  text-[1.1rem] bg-[#1876F2] todoFont px-4 text-white
+                    ? `truncate mx-4 border p-1.5 font-bold  text-[1.1rem] bg-[#1876F2] todoFont px-4 text-white
                      hover:bg-white dad1 duration-200 hover:text-[#1876F2] rounded-full border-[#1876F2]`
-                    : " text-cyan-900 mx-4 border dad1 font-bold  p-1.5 text-[1.1rem] todoFont px-4 hover:bg-[#1876F2] duration-200 hover:text-white rounded-full border-[#1876F2]"
+                    : "truncate  text-cyan-900 mx-4 border dad1 font-bold  p-1.5 text-[1.1rem] todoFont px-4 hover:bg-[#1876F2] duration-200 hover:text-white rounded-full border-[#1876F2]"
                 }
               >
                 Crear cuenta

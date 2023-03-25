@@ -34,6 +34,7 @@ export const Router = () => {
 
   const [usersP, setUsersP] = useState([]);
   const token = localStorage.getItem("secure_token");
+  const token1 = localStorage.getItem("token_token1");
   let type = localStorage.getItem("type")
   let usersData = {
     tokeVerify:"",
@@ -43,15 +44,19 @@ export const Router = () => {
   useEffect(() => {
     
     async  function getModulesUser(){
-      const response = await axios.get(`http://localhost:3002/getMod/${token}`)
+      const response = await axios.get(`http://localhost:3002/getMod/${token1}`)
      
       const modules = response.data.data
+      console.log(modules);
       modules.map((item)=>{
        return setUsersP([...usersP,usersP.push(item.titulo)])
       })
     }
     getModulesUser()
   }, [])
+
+  console.log(usersP);
+  
 
 
 
@@ -61,7 +66,7 @@ export const Router = () => {
     const obj = modules
     let toke = token ? token : null;
     usersData.tokeVerify = toke
-    usersData.permisions = ["inventario"]
+    // usersData.permisions = ["inventario"]
     usersData.permisions = usersP
   
   }
