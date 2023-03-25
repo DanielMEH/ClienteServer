@@ -83,7 +83,7 @@ export const Header = () => {
           <div className="list">
             <ul>
               <li>
-                <Link to={"/"} className="clup  border-b">
+                <Link to={"/"} className="clup  ">
                   <span><FontAwesomeIcon icon={faHome}
                   className="text-gray-400 text-xl"/> 
                   <span className="ml-2 font-medium">Inicio</span>
@@ -92,7 +92,7 @@ export const Header = () => {
                    <FontAwesomeIcon icon={faAngleRight} className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
               <li>
-                <Link to={"/login"} className="clup  border-b">
+                <Link to={"/login"} className="clup  ">
                <span> <FontAwesomeIcon icon={faUser}
                   className="text-gray-400 text-xl "/> <span className="ml-2">
                     Iniciar sesión</span></span>
@@ -100,7 +100,7 @@ export const Header = () => {
                 <FontAwesomeIcon icon={faAngleRight} className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
               <li>
-                <Link to={"/signup"} className="clup  border-b">
+                <Link to={"/signup"} className="clup  ">
 
                   <span><FontAwesomeIcon icon={faCircleUser} 
                   className="text-gray-400 text-xl  "/> <span className="ml-2 font-medium">Crear cuenta</span></span>
@@ -117,19 +117,19 @@ export const Header = () => {
           <div className="list">
             <ul>
               <li>
-                <Link to={"/somos"}className="clup  border-b">
+                <Link to={"/somos"}className="clup  ">
                   <span> <FontAwesomeIcon icon={faLayerGroup}
                   className="text-gray-400 text-xl"/> <span className="ml-2 font-medium">Quienes somos</span> </span>
                 <FontAwesomeIcon icon={faAngleRight}  className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
               <li>
-                <Link to={"/servicios"}className="clup  border-b">
+                <Link to={"/servicios"}className="clup  ">
                   <span> <FontAwesomeIcon icon={faCloud}
                   className="text-gray-400"/> <span className=" ml-2 font-medium">Servicios</span></span>
                 <FontAwesomeIcon icon={faAngleRight} className=" mx-3 text-gray-400 text-xl"/></Link>
               </li>
               <li>
-                <Link to={"/"}className="clup  border-b">
+                <Link to={"/"}className="clup  ">
                   <span> <FontAwesomeIcon icon={faHeart}
                   className="text-gray-400 text-xl"/> 
                   <span className=" ml-2 font-medium"> Stored</span> </span>
