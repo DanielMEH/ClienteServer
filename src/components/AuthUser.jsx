@@ -101,6 +101,7 @@ export const AuthUser = () => {
                   console.log(response);
                   
                   if(response.data.type === "user"){
+                    console.log("Hola");
                     let arrayLocalStorageModul = response.data.module
 
                     if (response.status === 200) {
@@ -115,6 +116,7 @@ export const AuthUser = () => {
                         arrayModule=arrayLocalStorageModul[i].titulo
                       }
                       let getData = response.data;
+                      console.log(getData);
                     
                       localStorage.setItem("secure_token", getData.token);
                       localStorage.setItem("auth_cuenta", getData.auth);
